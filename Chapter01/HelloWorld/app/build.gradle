@@ -1,0 +1,50 @@
+// com.android.application 表示这是一个应用程序模块 可以直接运行
+// com.android.library 表示这是一个库模块 只能依赖于应用程序模块才能运行
+apply plugin: 'com.android.application'
+
+android {
+//    编译sdk版本
+    compileSdkVersion 26
+//    可以对项目的更多细节进行配置
+    defaultConfig {
+        applicationId "com.example.helloworld"
+//        最低兼容的sdk版本
+        minSdkVersion 21
+//        表示在Android 5.1系统上做了充分测试 从上面的21和下面的22看来，我们的app只能在Android 5上运行
+        targetSdkVersion 22
+//        项目版本号
+        versionCode 1
+//        项目版本名
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+//    用于指定生成安装文件的相关配置
+    buildTypes {
+//        指定生成测试版安装程序的配置，debug闭包可以忽略不写
+        debug {
+
+        }
+//        指定生成发布版安装程序的配置
+        release {
+//            用于指定是true否false对项目的代码进行混淆
+            minifyEnabled false
+//            混淆时使用的规则文件
+//            proguard-android.txt是在Android SDK目录下的“SDK目录\tools\proguard\proguard-android.txt”，里面是所有项目通用的混淆规则
+//            proguard-rules.pro是在当前项目的app目录下的，里面可以编写当前项目特有的混淆规则
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+// 指定当前项目所有的依赖关系，有本地依赖，远程依赖，库依赖（项目中模块之间的依赖 implementation project(':module name')）。
+dependencies {
+//    本地依赖，表示把当前项目libs目录下的以.jar结尾的jar包添加到项目
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//    远程依赖，可以对jcenter等的开源项目添加依赖
+//    com.android.support 域名 appcompat-v7 组 26.1.0 版本号
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+}
