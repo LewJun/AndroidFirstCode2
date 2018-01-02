@@ -1,5 +1,6 @@
 package com.example.activitydemo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -41,6 +42,18 @@ public class FirstActivity extends AppCompatActivity {
             public void onClick(View view) {
 //                通过调用finish方法销毁一个活动
                 finish();
+            }
+        });
+
+        Button btn_open_second = findViewById(R.id.btn_open_second);
+        btn_open_second.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Intent 是各组件之间交互的一种方式
+                // 使用显示意图打开SecondActivity
+                Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+//                启动活动
+                startActivity(intent);
             }
         });
     }
