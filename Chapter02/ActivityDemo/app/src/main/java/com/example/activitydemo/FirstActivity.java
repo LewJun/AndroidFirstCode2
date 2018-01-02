@@ -1,6 +1,7 @@
 package com.example.activitydemo;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -56,6 +57,44 @@ public class FirstActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button btn_open_second2 = findViewById(R.id.btn_open_second2);
+        btn_open_second2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 使用隐式意图打开SecondActivity
+                Intent intent = new Intent("action.SecondActivity");
+                intent.addCategory("category.SecondActivity");
+//                启动活动
+                startActivity(intent);
+            }
+        });
+
+
+
+        Button btn_tel911 = findViewById(R.id.btn_tel911);
+        btn_tel911.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 使用隐式意图拨打911
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:9111"));
+//                启动活动
+                startActivity(intent);
+            }
+        });
+
+        Button btn_viewnet = findViewById(R.id.btn_viewnet);
+        btn_viewnet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 使用隐式意图访问网页
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.baidu.com"));
+//                启动活动
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     // 使用菜单第二步，重写onCreateOptionsMenu方法，为菜单绑定菜单项

@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.activitydemo">
 
+    <!--声明拨打电话权限-->
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,6 +18,20 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--给Activity声明意图规则-->
+        <activity
+            android:name=".SecondActivity"
+            android:label="SecondActivity">
+            <intent-filter>
+                <action android:name="action.SecondActivity" />
+                <category android:name="category.SecondActivity" />
+                <!--设置了如上的category，但是还必须要显示的添加如下的android.intent.category.DEFAULT，否则会出现错误-->
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <!--还可以通过设置data来满足更多需要 例如scheme 协议 port 端口，path 路径-->
+                <!--<data android:scheme="http"/>-->
             </intent-filter>
         </activity>
     </application>

@@ -21,4 +21,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="显示打开SecondActivity" />
+
+    <Button
+        android:id="@+id/btn_open_second2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="隐式打开SecondActivity" />
+
+    <Button
+        android:id="@+id/btn_tel911"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="隐式call911" />
+
+    <Button
+        android:id="@+id/btn_viewnet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="访问网页" />
 </LinearLayout>
