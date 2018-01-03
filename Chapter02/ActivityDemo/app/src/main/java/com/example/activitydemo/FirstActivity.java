@@ -94,7 +94,17 @@ public class FirstActivity extends AppCompatActivity {
             }
         });
 
-
+        Button btn_open_second3 = findViewById(R.id.btn_open_second3);
+        btn_open_second3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+                // 把数据放到Intent中
+                intent.putExtra("param1", "数据1");
+                intent.putExtra("param2",2);
+                startActivity(intent);
+            }
+        });
     }
 
     // 使用菜单第二步，重写onCreateOptionsMenu方法，为菜单绑定菜单项
