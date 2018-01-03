@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +21,7 @@ import android.widget.Toast;
  */
 public class FirstActivity extends AppCompatActivity {
 
+    private static final String TAG = "FirstActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,6 +107,37 @@ public class FirstActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button btn_open_second4 = findViewById(R.id.btn_open_second4);
+        btn_open_second4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+                startActivityForResult(intent, CHOOSE_RESULT);
+            }
+        });
+    }
+
+    private final int CHOOSE_RESULT = 1;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+//        1 判断数据来源
+        switch (requestCode) {
+            case CHOOSE_RESULT:
+//                2 判断数据是否成功
+                if (resultCode == RESULT_OK) {
+                    String result = data.getStringExtra("result");
+                    Log.d(TAG, "onActivityResult: " + result);
+                } else if(resultCode == RESULT_CANCELED) {
+                    // 取消
+                }
+                break;
+
+            default:
+                break;
+        }
     }
 
     // 使用菜单第二步，重写onCreateOptionsMenu方法，为菜单绑定菜单项
