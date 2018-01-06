@@ -11,5 +11,10 @@ public class ThirdActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third);
         Log.d(TAG, "当前活动实例: " + this.toString() + ", task id: " + getTaskId());
+
+        // 退出应用
+        findViewById(R.id.btn_exit).setOnClickListener(view -> {
+            ActivityCollector.finishAll();
+        });
     }
 }

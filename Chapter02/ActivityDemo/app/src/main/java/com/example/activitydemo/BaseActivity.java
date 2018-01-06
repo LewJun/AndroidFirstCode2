@@ -16,5 +16,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 //        打印Activity 名字
         Log.d(TAG, "Activity Name: " + this.getClass().getSimpleName());
+
+        ActivityCollector.addActivity(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ActivityCollector.removeActivity(this);
     }
 }
