@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.activitydemo">
 
-    <!--声明拨打电话权限-->
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <!-- 声明拨打电话权限 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,29 +12,57 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <!--
         给主活动指定的label会成为该活动的标题外，还会成为启动器中应用程序显示的名称
+
+        launchMode
+            standard 默认情况下，每个活动的默认启动方式，每启动一个活动都创建一个新的实例加入到返回栈中
+
+            singleTop 在打开一个活动的时候，如果该活动已经处于栈顶时，那么就直接使用，否则创建一个新活动。
+                      如果该活动已经存在，但是并不是栈顶时，也会创建一个新活动
+
+            singleTask 让活动在整个应用程序的上下文中只保存一个实例，当活动的启动模式为singleTask，启动活动
+                       的时候，如果该活动已经存在，那么直接使用，并且将该活动之上的其它活动出栈，如果该活动不
+                       存在，则创建。PS 如果不希望其它活动出栈该怎么办？
+
+            singleInstance 将启用一个新的返回栈来管理该活动
         -->
-        <activity android:name=".FirstActivity">
+        <activity
+            android:name=".FirstActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--给Activity声明意图规则-->
+        <!--
+         给Activity声明意图规则
+         设置启动模式为singleInstance
+         启动FirstActivity， task id 20，
+         在FirstActivity中启动SecondActivity，task id 21，（加入新返回栈 21）
+         在SecondActivity中启动ThirdActivity，task id 20
+         在ThirdActivity中按返回键，回到了FirstActivity，（同一个返回栈中返回 21）
+         在FirstActivity中按返回键，回到了SecondActivity，（同一返回栈20中已经全部出栈为空，于是显示了另一个返回栈21中栈顶的活动）
+         在FirstActivity中按返回键，回到了手机桌面 （返回栈21中已经全部出栈为空）
+         -->
         <activity
             android:name=".SecondActivity"
-            android:label="SecondActivity">
+            android:label="SecondActivity"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="action.SecondActivity" />
+
                 <category android:name="category.SecondActivity" />
-                <!--设置了如上的category，但是还必须要显示的添加如下的android.intent.category.DEFAULT，否则会出现错误-->
+                <!-- 设置了如上的category，但是还必须要显示的添加如下的android.intent.category.DEFAULT，否则会出现错误 -->
                 <category android:name="android.intent.category.DEFAULT" />
 
-                <!--还可以通过设置data来满足更多需要 例如scheme 协议 port 端口，path 路径-->
-                <!--<data android:scheme="http"/>-->
+                <!-- 还可以通过设置data来满足更多需要 例如scheme 协议 port 端口，path 路径 -->
+                <!-- <data android:scheme="http"/> -->
             </intent-filter>
         </activity>
+        <activity android:name=".ThirdActivity" android:label="third act"/>
     </application>
 
 </manifest>

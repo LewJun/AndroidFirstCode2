@@ -27,6 +27,7 @@ public class FirstActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 //        给当前活动加载一个布局
         setContentView(R.layout.activity_first);
+        Log.d(TAG, "当前活动实例: " + this.toString() + ", task id: " + getTaskId());
 
         // findViewById，方法名很形象，通过id找到view
         Button btn_hello = findViewById(R.id.btn_hello);
@@ -115,6 +116,13 @@ public class FirstActivity extends AppCompatActivity {
                 Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
                 startActivityForResult(intent, CHOOSE_RESULT);
             }
+        });
+
+
+        Button btn_open_myself = findViewById(R.id.btn_open_myself);
+        btn_open_myself.setOnClickListener((view)-> {
+            Intent intent = new Intent(FirstActivity.this, FirstActivity.class);
+            startActivity(intent);
         });
     }
 

@@ -53,4 +53,10 @@
         android:layout_height="wrap_content"
         android:text="start for result" />
 
+    <Button
+        android:id="@+id/btn_open_myself"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="open myself" />
+
 </LinearLayout>

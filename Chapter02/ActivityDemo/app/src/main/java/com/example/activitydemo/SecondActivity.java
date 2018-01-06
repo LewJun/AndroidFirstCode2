@@ -13,6 +13,7 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+        Log.d(TAG, "当前活动实例: " + this.toString() + ", task id: " + getTaskId());
 
         // 得到启动当前Activity的Intent
         Intent intent = getIntent();
@@ -41,5 +42,15 @@ public class SecondActivity extends AppCompatActivity {
 //        向上一个活动返回数据
         setResult(RESULT_OK, intent);
         finish();
+    }
+
+    public void toFirstActivity(View view) {
+        Intent intent = new Intent(this, FirstActivity.class);
+        startActivity(intent);
+    }
+
+    public void toThirdActivity(View view) {
+        Intent intent = new Intent(this, ThirdActivity.class);
+        startActivity(intent);
     }
 }
