@@ -1,5 +1,6 @@
 package com.example.activitydemo;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.view.View;
 public class SecondActivity extends BaseActivity {
 
     private static final String TAG = "SecondActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +21,22 @@ public class SecondActivity extends BaseActivity {
         String param1 = intent.getStringExtra("param1");
         Log.d(TAG, "param1: " + param1);
 
-        intent.getIntExtra("param2",0);
+        int param2 = intent.getIntExtra("param2", 0);
+        Log.d(TAG, "param2: " + param2);
+    }
+
+    /**
+     * 启动SecondActivity，并设置参数
+     *
+     * @param context 上下文
+     * @param param1  参数1
+     * @param param2  参数2
+     */
+    public static void actionStart(Context context, String param1, int param2) {
+        Intent intent = new Intent(context, SecondActivity.class);
+        intent.putExtra("param1", param1);
+        intent.putExtra("param2", param2);
+        context.startActivity(intent);
     }
 
     // 通过按返回键返回

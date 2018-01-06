@@ -54,9 +54,10 @@ public class FirstActivity extends BaseActivity {
             public void onClick(View view) {
                 // Intent 是各组件之间交互的一种方式
                 // 使用显示意图打开SecondActivity
-                Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
-//                启动活动
-                startActivity(intent);
+//                Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+////                启动活动
+//                startActivity(intent);
+                SecondActivity.actionStart(FirstActivity.this, "param1", 222);
             }
         });
 

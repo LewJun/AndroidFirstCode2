@@ -16,5 +16,10 @@ public class ThirdActivity extends BaseActivity {
         findViewById(R.id.btn_exit).setOnClickListener(view -> {
             ActivityCollector.finishAll();
         });
+
+        // 打开second
+        findViewById(R.id.btn_open_second).setOnClickListener(view -> {
+            SecondActivity.actionStart(ThirdActivity.this, "param1", 333);
+        });
     }
 }
