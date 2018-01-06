@@ -2,7 +2,6 @@ package com.example.activitydemo;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -19,7 +18,7 @@ import android.widget.Toast;
  * 3 为类加载布局文件
  * 4 在AndroidManifest.xml文件的application节点下配置Activity类。
  */
-public class FirstActivity extends AppCompatActivity {
+public class FirstActivity extends BaseActivity {
 
     private static final String TAG = "FirstActivity";
     @Override
