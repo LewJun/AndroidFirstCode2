@@ -55,7 +55,8 @@ public class FruitAdapter extends RecyclerView.Adapter<FruitAdapter.ViewHolder> 
 
             Context context = itemView.getContext();
             itemView.setOnClickListener(v -> {
-                Toast.makeText(context, "itemView clicked", Toast.LENGTH_SHORT).show();
+                int position = getAdapterPosition();
+                Toast.makeText(context, "itemView clicked, " + position, Toast.LENGTH_SHORT).show();
             });
 
             iv_fruit_pic.setOnClickListener(v -> {
