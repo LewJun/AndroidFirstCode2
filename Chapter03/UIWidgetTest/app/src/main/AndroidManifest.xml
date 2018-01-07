@@ -26,7 +26,8 @@
         <activity android:name=".advanced.AdvancedActivity" />
         <activity android:name=".google.GoogleActivity" />
         <activity android:name=".design.DesignActivity" />
-        <activity android:name=".appcompats.AppCompatsActivity"></activity>
+        <activity android:name=".appcompats.AppCompatsActivity" />
+        <activity android:name=".containers.ListViewActivity" />
     </application>
 
 </manifest>
