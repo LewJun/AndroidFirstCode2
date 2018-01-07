@@ -28,6 +28,7 @@
         <activity android:name=".design.DesignActivity" />
         <activity android:name=".appcompats.AppCompatsActivity" />
         <activity android:name=".containers.ListViewActivity" />
+        <activity android:name=".appcompats.RecyclerViewActivity"></activity>
     </application>
 
 </manifest>
