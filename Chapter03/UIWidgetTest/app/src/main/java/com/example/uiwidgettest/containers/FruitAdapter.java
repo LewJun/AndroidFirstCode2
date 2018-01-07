@@ -41,9 +41,26 @@ public class FruitAdapter extends ArrayAdapter<Fruit> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         Log.d(TAG, "pos: " + position + ", convertView: " + convertView);
-//        加载子项布局 不用添加到父布局，因为如果添加了父布局，那么就不能添加到ListView中了。
+/*//        加载子项布局 不用添加到父布局，因为如果添加了父布局，那么就不能添加到ListView中了。
         View view = LayoutInflater.from(getContext()).inflate(this.resource, parent, false);
 //        从布局中得到控件
+        ImageView iv_fruit_pic = view.findViewById(R.id.iv_fruit_pic);
+        TextView tv_fruit_name = view.findViewById(R.id.tv_fruit_name);
+
+//        设置控件值
+        Fruit fruit = getItem(position);
+        iv_fruit_pic.setImageResource(fruit.getImgId());
+        tv_fruit_name.setText(fruit.getName());
+*/
+//        如上log打印结果中，只有pos为0时，convertView为空，其它时候都新建的convertView
+//        优化
+        View view;
+        if (convertView == null) {
+            view = LayoutInflater.from(getContext()).inflate(this.resource, parent, false);
+        } else {
+            view = convertView;
+        }
+        //        从布局中得到控件
         ImageView iv_fruit_pic = view.findViewById(R.id.iv_fruit_pic);
         TextView tv_fruit_name = view.findViewById(R.id.tv_fruit_name);
 
