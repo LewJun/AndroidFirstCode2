@@ -53,8 +53,8 @@ public class FruitAdapter extends ArrayAdapter<Fruit> {
         tv_fruit_name.setText(fruit.getName());
 */
 //        如上log打印结果中，只有pos为0时，convertView为空，其它时候都新建的convertView
-//        优化
-        View view;
+//        优化1
+/*        View view;
         if (convertView == null) {
             view = LayoutInflater.from(getContext()).inflate(this.resource, parent, false);
         } else {
@@ -67,7 +67,33 @@ public class FruitAdapter extends ArrayAdapter<Fruit> {
 //        设置控件值
         Fruit fruit = getItem(position);
         iv_fruit_pic.setImageResource(fruit.getImgId());
-        tv_fruit_name.setText(fruit.getName());
+        tv_fruit_name.setText(fruit.getName());*/
+
+// 如上，虽然对view进行了优化，但是每次都还是要重新查找ImageView和TextView
+//优化2 使用ViewHolder来对控件进行优化
+        View view;
+        ViewHolder viewHolder;
+        if (convertView == null) {
+            view = LayoutInflater.from(getContext()).inflate(resource, parent, false);
+
+            viewHolder = new ViewHolder();
+            viewHolder.iv_fruit_pic = view.findViewById(R.id.iv_fruit_pic);
+            viewHolder.tv_fruit_name = view.findViewById(R.id.tv_fruit_name);
+            view.setTag(viewHolder);
+        } else {
+            view = convertView;
+            viewHolder = (ViewHolder) view.getTag();
+        }
+
+//        设置控件值
+        Fruit fruit = getItem(position);
+        viewHolder.iv_fruit_pic.setImageResource(fruit.getImgId());
+        viewHolder.tv_fruit_name.setText(fruit.getName());
         return view;
+    }
+
+    static class ViewHolder {
+        ImageView iv_fruit_pic;
+        TextView tv_fruit_name;
     }
 }
