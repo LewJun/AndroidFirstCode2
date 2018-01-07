@@ -1,37 +1,18 @@
 package com.example.uiwidgettest.appcompats;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.example.uiwidgettest.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecyclerViewActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recycler_view);
-
-        initDatas2();
-        RecyclerView recycler_view = findViewById(R.id.recycler_view);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-//        设置RecyclerView的布局方式 此处为线性布局
-        recycler_view.setLayoutManager(layoutManager);
-
-//        添加分割线（RecyclerView默认没有分割线）
-        DividerItemDecoration decor = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
-        recycler_view.addItemDecoration(decor);
-
-        FruitAdapter adapter = new FruitAdapter(R.layout.fruit_list_item_1, fruits);
-//        设置RecyclerView的适配器
-        recycler_view.setAdapter(adapter);
-    }
+public class RecyclerViewHActivity extends AppCompatActivity {
 
     List<Fruit> fruits = new ArrayList<>();
 
@@ -48,5 +29,25 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
             fruits.add(fruit);
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_recycler_view_h);
+
+        initDatas2();
+        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+
+        // 设置为横向
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager(layoutManager);
+
+        FruitAdapter adapter = new FruitAdapter(R.layout.fruit_list_item_2, fruits);
+        recyclerView.setAdapter(adapter);
+
+        DividerItemDecoration decor = new DividerItemDecoration(this, DividerItemDecoration.HORIZONTAL);
+        recyclerView.addItemDecoration(decor);
     }
 }

@@ -19,4 +19,14 @@ public class AppCompatsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, RecyclerViewActivity.class);
         startActivity(intent);
     }
+
+    public void openRecyclerViewHActivity(View view) {
+        Intent intent = new Intent(this, RecyclerViewHActivity.class);
+        startActivity(intent);
+    }
+
+    public void openRecyclerViewGridActivity(View view) {
+        Intent intent = new Intent(this, RecyclerViewGridActivity.class);
+        startActivity(intent);
+    }
 }

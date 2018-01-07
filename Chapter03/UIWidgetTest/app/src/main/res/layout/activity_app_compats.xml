@@ -5,9 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.uiwidgettest.appcompats.AppCompatsActivity">
+
     <Button
-        android:text="open RecyclerView Activity"
-        android:onClick="openRecyclerViewActivity"
+        android:id="@+id/btn_openRecyclerViewActivity"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:onClick="openRecyclerViewActivity"
+        android:text="open RecyclerView Activity" />
+
+    <!--约束该控件的上方在btn_openRecyclerViewActivity的下方-->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_openRecyclerViewHActivity"
+        android:onClick="openRecyclerViewHActivity"
+        android:text="open RecyclerView H Activity"
+        app:layout_constraintTop_toBottomOf="@+id/btn_openRecyclerViewActivity" />
+
+    <!--约束该控件的上方在btn_openRecyclerViewHActivity的下方-->
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="openRecyclerViewGridActivity"
+        android:text="open RecyclerView Grid Activity"
+        app:layout_constraintTop_toBottomOf="@+id/btn_openRecyclerViewHActivity" />
 </android.support.constraint.ConstraintLayout>
