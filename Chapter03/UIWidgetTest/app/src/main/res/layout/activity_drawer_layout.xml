@@ -36,12 +36,15 @@
     作为第二个子控件，layout_gravity必须要指定，告诉DrawerLayout侧滑菜单在屏幕的位置左边还是右边
     设置为start和end，app会根据系统的语言来判断是从左还是右
     如果没有设置背景，那真是。。。
+    设置按钮和头app:headerLayout="@layout/nav_header"
+        app:menu="@menu/nav_menu"
     -->
-    <TextView
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#fff"
-        android:text="This is menu" />
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/nav_menu"/>
 
 </android.support.v4.widget.DrawerLayout>

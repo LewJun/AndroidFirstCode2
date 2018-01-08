@@ -1,10 +1,11 @@
 package com.example.uiwidgettest.appcompats;
 
+import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -34,6 +35,16 @@ public class DrawerLayoutActivity extends AppCompatActivity {
             // 设置一个导航按钮图标
             actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         }
+
+        NavigationView nav_view = findViewById(R.id.nav_view);
+        // 默认选中
+        nav_view.setCheckedItem(R.id.nav_call);
+        // 添加点击事件
+        nav_view.setNavigationItemSelectedListener(item -> {
+            // 关闭滑动菜单
+            drawerLayout.closeDrawers();
+            return true;
+        });
     }
 
     @Override
