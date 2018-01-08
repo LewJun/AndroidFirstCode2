@@ -1,6 +1,7 @@
 package com.example.uiwidgettest.appcompats;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -44,6 +45,11 @@ public class DrawerLayoutActivity extends AppCompatActivity {
             // 关闭滑动菜单
             drawerLayout.closeDrawers();
             return true;
+        });
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(v-> {
+            Toast.makeText(DrawerLayoutActivity.this, "fab is clicked", Toast.LENGTH_SHORT).show();
         });
     }
 
