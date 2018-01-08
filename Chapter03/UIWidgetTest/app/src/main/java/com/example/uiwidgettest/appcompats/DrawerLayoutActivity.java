@@ -3,6 +3,7 @@ package com.example.uiwidgettest.appcompats;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -49,7 +50,11 @@ public class DrawerLayoutActivity extends AppCompatActivity {
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(v-> {
-            Toast.makeText(DrawerLayoutActivity.this, "fab is clicked", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(DrawerLayoutActivity.this, "fab is clicked", Toast.LENGTH_SHORT).show();
+            Snackbar.make(v, "删除成功", Snackbar.LENGTH_SHORT)
+                    .setAction("撤销", v2->{
+                        Toast.makeText(DrawerLayoutActivity.this, "撤销成功", Toast.LENGTH_SHORT).show();
+                    }).show();
         });
     }
 
