@@ -34,4 +34,9 @@ public class AppCompatsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ToolBarActivity.class);
         startActivity(intent);
     }
+
+    public void openDrawerLayoutActivity(View view) {
+        Intent intent = new Intent(this, DrawerLayoutActivity.class);
+        startActivity(intent);
+    }
 }
