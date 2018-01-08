@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--
+    app:showAsAction="always" 表示永远显示在toolbar中，如果屏幕控件不够不显示
+    ifRoom 表示屏幕控件足够显示，否则显示在菜单当中
+    never 表示永远显示在菜单中。
+    注意：Toolbar中的action按钮只会显示图标，菜单中的action按钮只会显示文字
+    -->
+    <item
+        android:id="@+id/item_backup"
+        android:icon="@drawable/ic_backup"
+        android:title="Backup"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/item_delete"
+        android:icon="@drawable/ic_delete"
+        android:title="Delete"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/item_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="Settings"
+        app:showAsAction="never" />
+</menu>

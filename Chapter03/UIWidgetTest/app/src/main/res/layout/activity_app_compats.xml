@@ -24,9 +24,18 @@
 
     <!--约束该控件的上方在btn_openRecyclerViewHActivity的下方-->
     <Button
+        android:id="@+id/btn_openRecyclerViewGridActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="openRecyclerViewGridActivity"
         android:text="open RecyclerView Grid Activity"
         app:layout_constraintTop_toBottomOf="@+id/btn_openRecyclerViewHActivity" />
+
+    <Button
+        android:onClick="openToolBarActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="open ToolBar Activity"
+        app:layout_constraintTop_toBottomOf="@+id/btn_openRecyclerViewGridActivity"
+        />
 </android.support.constraint.ConstraintLayout>

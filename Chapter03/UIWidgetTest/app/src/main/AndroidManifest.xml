@@ -27,11 +27,13 @@
         <activity android:name=".google.GoogleActivity" />
         <activity android:name=".design.DesignActivity" />
         <activity android:name=".containers.ListViewActivity" />
-
         <activity android:name=".appcompats.AppCompatsActivity" />
         <activity android:name=".appcompats.RecyclerViewActivity" />
         <activity android:name=".appcompats.RecyclerViewHActivity" />
         <activity android:name=".appcompats.RecyclerViewGridActivity" />
+        <activity
+            android:name=".appcompats.ToolBarActivity"
+            android:label="Toolbar" />
     </application>
 
 </manifest>

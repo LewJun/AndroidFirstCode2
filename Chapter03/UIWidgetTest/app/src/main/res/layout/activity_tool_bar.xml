@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.uiwidgettest.appcompats.ToolBarActivity">
+
+    <!--
+    height设置为ActionBar的高度
+    不设置背景将默认为白色，背景颜色设置android:background="?attr/colorPrimary"
+    因为AppTheme设置了淡色，那么此时toolbar也将使用淡色作为主题，toolbar上的元素将自动
+    使用深色系，这是为了和主体颜色区分。但是这个效果看起来就会很差，之前ActionBar上的文字
+    都是白色，现在变成了黑色，所以，这里给toolbar单独使用深色主题。
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+
+    如果toolbar上有弹出菜单，那么弹出菜单的项也会使用深色主题，效果也很丑，这里我们为弹出菜单应用淡色主题。
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    -->
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        />
+</android.support.constraint.ConstraintLayout>

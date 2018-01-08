@@ -1,11 +1,17 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <!-- Base application theme.
+    Theme.AppCompat.NoActionBar 表示深色主题，它会将界面的主体颜色设置为深色，陪衬颜色设置为浅色。
+    Theme.AppCompat.Light.NoActionBar 表示浅色主题，它会将界面的主体颜色设置为浅色，而陪衬色设置为深色
+     -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!--<item name="textColorPrimary">#000</item>
+        <item name="windowBackground">#fff</item>
+        <item name="navigationBarColor">#ff0</item>-->
     </style>
 
 </resources>

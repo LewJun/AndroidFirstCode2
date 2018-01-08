@@ -29,4 +29,9 @@ public class AppCompatsActivity extends AppCompatActivity {
         Intent intent = new Intent(this, RecyclerViewGridActivity.class);
         startActivity(intent);
     }
+
+    public void openToolBarActivity(View view) {
+        Intent intent = new Intent(this, ToolBarActivity.class);
+        startActivity(intent);
+    }
 }
