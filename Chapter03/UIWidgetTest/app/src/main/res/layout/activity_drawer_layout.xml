@@ -11,8 +11,7 @@
     -->
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.example.uiwidgettest.appcompats.ToolBarActivity">
+        android:layout_height="match_parent">
 
         <!--
         height设置为ActionBar的高度
@@ -32,6 +31,11 @@
             android:background="?attr/colorPrimary"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
         <!--
         FloatingActionButton 浮动按钮的使用

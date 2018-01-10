@@ -8,12 +8,20 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.uiwidgettest.R;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class DrawerLayoutActivity extends AppCompatActivity {
 
@@ -56,8 +64,38 @@ public class DrawerLayoutActivity extends AppCompatActivity {
                         Toast.makeText(DrawerLayoutActivity.this, "撤销成功", Toast.LENGTH_SHORT).show();
                     }).show();
         });
+
+
+        initDatas2();
+        RecyclerView recycler_view = findViewById(R.id.recycler_view);
+        GridLayoutManager layoutManager = new GridLayoutManager(this,2 );
+//        设置RecyclerView的布局方式 此处为表格布局
+        recycler_view.setLayoutManager(layoutManager);
+
+        adapter = new FruitAdapter(R.layout.fruit_list_item_3, fruits);
+//        设置RecyclerView的适配器
+        recycler_view.setAdapter(adapter);
     }
 
+    FruitAdapter adapter =null;
+
+    List<Fruit> fruits = new ArrayList<>();
+
+    private void initDatas2() {
+        Fruit[] fruits = {new Fruit("Apple", R.drawable.apple), new Fruit("Banana",
+                R.drawable.banana),
+                new Fruit("Orange", R.drawable.orange), new Fruit("Watermelon", R.
+                drawable.watermelon),
+                new Fruit("Pear", R.drawable.pear), new Fruit("Grape", R.drawable.
+                grape),
+                new Fruit("Pineapple", R.drawable.pineapple), new Fruit("Strawberry",
+                R.drawable.strawberry),
+                new Fruit("Cherry", R.drawable.cherry), new Fruit("Mango", R.drawable.
+                mango)};
+
+        this. fruits = Arrays.asList(fruits);
+
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar,menu);
