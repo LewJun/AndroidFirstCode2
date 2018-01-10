@@ -60,7 +60,7 @@ public class FruitAdapter2 extends RecyclerView.Adapter<FruitAdapter2.ViewHolder
             mCardView = (CardView) itemView;
             iv_fruit_pic = itemView.findViewById(R.id.iv_fruit_pic);
             tv_fruit_name = itemView.findViewById(R.id.tv_fruit_name);
-
+/*
             Context context = itemView.getContext();
             itemView.setOnClickListener(v -> {
                 int position = getAdapterPosition();
@@ -73,7 +73,7 @@ public class FruitAdapter2 extends RecyclerView.Adapter<FruitAdapter2.ViewHolder
 
             tv_fruit_name.setOnClickListener(v -> {
                 Toast.makeText(context, "tv_fruit_name clicked", Toast.LENGTH_SHORT).show();
-            });
+            });*/
         }
     }
 }

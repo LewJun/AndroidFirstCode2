@@ -13,7 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <!--
         height设置为ActionBar的高度
         不设置背景将默认为白色，背景颜色设置android:background="?attr/colorPrimary"
         因为AppTheme设置了淡色，那么此时toolbar也将使用淡色作为主题，toolbar上的元素将自动
@@ -24,18 +27,24 @@
         如果toolbar上有弹出菜单，那么弹出菜单的项也会使用深色主题，效果也很丑，这里我们为弹出菜单应用淡色主题。
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         -->
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:layout_scrollFlags="scroll|enterAlways|snap"
+                />
+
+        </android.support.design.widget.AppBarLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            />
 
         <!--
         FloatingActionButton 浮动按钮的使用

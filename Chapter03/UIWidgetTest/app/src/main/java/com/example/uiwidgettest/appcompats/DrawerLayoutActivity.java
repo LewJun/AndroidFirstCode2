@@ -72,12 +72,12 @@ public class DrawerLayoutActivity extends AppCompatActivity {
 //        设置RecyclerView的布局方式 此处为表格布局
         recycler_view.setLayoutManager(layoutManager);
 
-        adapter = new FruitAdapter(R.layout.fruit_list_item_3, fruits);
+        adapter = new FruitAdapter2(R.layout.fruit_list_item_3, fruits);
 //        设置RecyclerView的适配器
         recycler_view.setAdapter(adapter);
     }
 
-    FruitAdapter adapter =null;
+    FruitAdapter2 adapter =null;
 
     List<Fruit> fruits = new ArrayList<>();
 
