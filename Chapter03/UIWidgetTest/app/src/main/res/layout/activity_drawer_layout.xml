@@ -6,8 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.uiwidgettest.appcompats.DrawerLayoutActivity">
-    <!--将主屏幕作为第一个子控件-->
-    <android.support.constraint.ConstraintLayout
+    <!--将主屏幕作为第一个子控件
+    CoordinatorLayout 可以监听其所有子控件的各种事件，然后自动帮助我们做出合理的响应。
+    -->
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.example.uiwidgettest.appcompats.ToolBarActivity">
@@ -41,10 +43,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:src="@drawable/ic_done"
-            app:elevation="5dp"
-            app:layout_constraintBottom_toTopOf="parent"
-            app:layout_constraintRight_toLeftOf="parent" />
-    </android.support.constraint.ConstraintLayout>
+            android:layout_gravity="end|bottom"
+            />
+    </android.support.design.widget.CoordinatorLayout>
 
     <!--
     作为第二个子控件，layout_gravity必须要指定，告诉DrawerLayout侧滑菜单在屏幕的位置左边还是右边
