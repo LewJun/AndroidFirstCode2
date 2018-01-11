@@ -6,6 +6,7 @@ import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
@@ -26,6 +27,8 @@ import java.util.List;
 public class DrawerLayoutActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
+
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +78,28 @@ public class DrawerLayoutActivity extends AppCompatActivity {
         adapter = new FruitAdapter2(R.layout.fruit_list_item_3, fruits);
 //        设置RecyclerView的适配器
         recycler_view.setAdapter(adapter);
+
+        mSwipeRefreshLayout = findViewById(R.id.swipe_refresh);
+        // 设置下拉刷新进度条的颜色
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
+//        下拉刷新回调函数
+        mSwipeRefreshLayout.setOnRefreshListener(()-> refreshFruits());
+    }
+
+    private void refreshFruits() {
+        new Thread(()->{
+            try {
+                Thread.sleep(2000);
+                runOnUiThread(()->{
+                    initDatas2();
+                    adapter.notifyDataSetChanged();
+                    // 设置正在刷新中（false表示取消正在进行时）
+                    mSwipeRefreshLayout.setRefreshing(false);
+                });
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 
     FruitAdapter2 adapter =null;
@@ -93,7 +118,7 @@ public class DrawerLayoutActivity extends AppCompatActivity {
                 new Fruit("Cherry", R.drawable.cherry), new Fruit("Mango", R.drawable.
                 mango)};
 
-        this. fruits = Arrays.asList(fruits);
+        this. fruits.addAll(Arrays.asList(fruits));
 
     }
     @Override
