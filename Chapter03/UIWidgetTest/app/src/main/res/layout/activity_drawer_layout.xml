@@ -7,12 +7,17 @@
     android:layout_height="match_parent"
     tools:context="com.example.uiwidgettest.appcompats.DrawerLayoutActivity">
     <!--将主屏幕作为第一个子控件
-    CoordinatorLayout 可以监听其所有子控件的各种事件，然后自动帮助我们做出合理的响应。
+    CoordinatorLayout 可以监听其所有子控件的各种事件，然后自动帮助我们做出合理的响应。它是一个加强版的FrameLayout
     -->
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!--使用AppBarLayout解决标题栏被RecyclerView覆盖的问题
+        1 将Toolbar加入到AppBarLayout中
+        2 给Recycler指定一个布局行为app:layout_behavior="@string/appbar_scrolling_view_behavior" 这样就将滚动事件告知了AppBarLayout
+        如上两步就解决了标题栏被RecyclerView覆盖的问题
+        -->
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -26,6 +31,12 @@
 
         如果toolbar上有弹出菜单，那么弹出菜单的项也会使用深色主题，效果也很丑，这里我们为弹出菜单应用淡色主题。
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+
+            AppBarLayout接收到滚动事件后，它内部的子控件可以去响应这些事件 scroll|enterAlways|snap
+            scroll 表示当rv向上滚动的时候，Toolbar会跟着一起向上滚动并实现隐藏，如果只指定scroll，那么在开始滚动的时候就滚动
+            enterAlways 表示当rv向下滚动的时候，Toolbar会跟着一起向下滚动并重新显示
+            snap 表示当Toolbar还没有完全显示或隐藏的时候，会根据当前滚动的距离，自动选择是显示还是隐藏。
+            只要稍微向下滑动界面，滚动条就又显示出来了。
         -->
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
