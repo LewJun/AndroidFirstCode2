@@ -34,7 +34,8 @@
         <activity
             android:name=".appcompats.ToolBarActivity"
             android:label="Toolbar" />
-        <activity android:name=".appcompats.DrawerLayoutActivity"></activity>
+        <activity android:name=".appcompats.DrawerLayoutActivity" />
+        <activity android:name=".appcompats.FruitDetailActivity"></activity>
     </application>
 
 </manifest>

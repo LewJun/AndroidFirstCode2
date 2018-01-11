@@ -1,6 +1,7 @@
 package com.example.uiwidgettest.appcompats;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -60,13 +61,16 @@ public class FruitAdapter2 extends RecyclerView.Adapter<FruitAdapter2.ViewHolder
             mCardView = (CardView) itemView;
             iv_fruit_pic = itemView.findViewById(R.id.iv_fruit_pic);
             tv_fruit_name = itemView.findViewById(R.id.tv_fruit_name);
-/*
-            Context context = itemView.getContext();
+
             itemView.setOnClickListener(v -> {
                 int position = getAdapterPosition();
-                Toast.makeText(context, "itemView clicked, " + position, Toast.LENGTH_SHORT).show();
+                Fruit fruit = fruits.get(position);
+                Intent intent = new Intent(mContext, FruitDetailActivity.class);
+                intent.putExtra("fruit_name", fruit.getName());
+                intent.putExtra("fruit_image_id", fruit.getImgId());
+                mContext.startActivity(intent);
             });
-
+/*
             iv_fruit_pic.setOnClickListener(v -> {
                 Toast.makeText(context, "iv_fruit_pic clicked", Toast.LENGTH_SHORT).show();
             });
