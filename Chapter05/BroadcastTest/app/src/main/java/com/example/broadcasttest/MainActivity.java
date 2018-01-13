@@ -8,6 +8,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,6 +40,12 @@ public class MainActivity extends AppCompatActivity {
         unregisterReceiver(receiver);
     }
 
+    public void sendBroadCast(View view) {
+        Intent intent = new Intent("com.example.broadcasttest.CARD");
+        intent.putExtra("CARD_NO", "233534662");
+        sendBroadcast(intent);
+    }
+
     /**
      * 1 声明一个广播接收器的处理类
      */
@@ -53,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
             ConnectivityManager connectionManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo activeNetworkInfo = connectionManager.getActiveNetworkInfo();
-            if(activeNetworkInfo!=null && activeNetworkInfo.isAvailable() && activeNetworkInfo.isConnected()) {
+            if (activeNetworkInfo != null && activeNetworkInfo.isAvailable() && activeNetworkInfo.isConnected()) {
                 Toast.makeText(context, "network is available",
                         Toast.LENGTH_SHORT).show();
             } else {

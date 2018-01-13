@@ -4,7 +4,7 @@
 
     <!-- 声明访问网络权限 -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -21,15 +21,27 @@
             </intent-filter>
         </activity>
 
-        <!--开机广播接收器 为其指定需要监听的广播android.intent.action.BOOT_COMPLETED-->
+        <!-- 开机广播接收器 为其指定需要监听的广播android.intent.action.BOOT_COMPLETED -->
         <receiver
             android:name=".BootCompleteReceiver"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+
+        <!-- 自定义广播接收器，监听打卡广播 -->
+        <receiver
+            android:name=".MyReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.broadcasttest.CARD" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".CardInfoActivity"></activity>
     </application>
 
 </manifest>
