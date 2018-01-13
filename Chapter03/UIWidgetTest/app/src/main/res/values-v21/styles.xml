@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--API 21之后的就加载values-v21/styles.FruitDetailActivityTheme-->
+<resources>
+    <!--android:statusBarColor属性在API21之后才有的，
+    那么需要在values-v21目录重新建立styles.xml 并设置状态栏为透明色
+            -->
+    <!--设置状态栏颜色为透明-->
+    <style name="FruitDetailActivityTheme" parent="AppTheme">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+</resources>

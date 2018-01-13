@@ -35,7 +35,11 @@
             android:name=".appcompats.ToolBarActivity"
             android:label="Toolbar" />
         <activity android:name=".appcompats.DrawerLayoutActivity" />
-        <activity android:name=".appcompats.FruitDetailActivity"></activity>
+
+        <!--使用主题FruitDetailActivityTheme设置statusBarColor-->
+        <activity
+            android:name=".appcompats.FruitDetailActivity"
+            android:theme="@style/FruitDetailActivityTheme"/>
     </application>
 
 </manifest>

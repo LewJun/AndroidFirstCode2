@@ -14,4 +14,7 @@
         <item name="navigationBarColor">#ff0</item>-->
     </style>
 
+    <!--API 21之前的就加载values/styles.FruitDetailActivityTheme-->
+    <style name="FruitDetailActivityTheme" parent="AppTheme" />
+
 </resources>
