@@ -26,7 +26,8 @@
             android:name=".BootCompleteReceiver"
             android:enabled="true"
             android:exported="true">
-            <intent-filter>
+            <!--设置优先级 越大越被先执行-->
+            <intent-filter android:priority="100">
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
@@ -41,7 +42,16 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".CardInfoActivity"></activity>
+        <activity android:name=".CardInfoActivity" />
+
+        <receiver
+            android:name=".MyReceiver2"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.broadcasttest.CARD"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

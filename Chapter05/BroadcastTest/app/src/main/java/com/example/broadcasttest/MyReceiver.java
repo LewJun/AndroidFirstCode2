@@ -21,5 +21,7 @@ public class MyReceiver extends BroadcastReceiver {
         // 打开一个活动
         intent.setClass(context, CardInfoActivity.class);
         context.startActivity(intent);
+        // 阻断广播继续传递
+        abortBroadcast();
     }
 }

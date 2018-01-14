@@ -43,7 +43,9 @@ public class MainActivity extends AppCompatActivity {
     public void sendBroadCast(View view) {
         Intent intent = new Intent("com.example.broadcasttest.CARD");
         intent.putExtra("CARD_NO", "233534662");
-        sendBroadcast(intent);
+//        sendBroadcast(intent);
+//        发送有序广播 权限暂时不用设置，如果设置了响应的权限，那么在广播接收器注册处也要声明响应权限。
+        sendOrderedBroadcast(intent, null);
     }
 
     /**
