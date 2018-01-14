@@ -6,18 +6,32 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     NetworkChangeReceiver receiver;
 
+    private LocalReceiver mLocalReceiver;
+    // 本地广播就是只在本应用中使用，通过LocalBroatcastManager来管理注册和注销
+    private LocalBroadcastManager mLocalBroadcastManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // 初始化本地广播管理器
+        mLocalBroadcastManager = LocalBroadcastManager.getInstance(this);
+
+        // 注册本地广播
+        mLocalReceiver = new LocalReceiver();
+        mLocalBroadcastManager.registerReceiver(mLocalReceiver,
+                new IntentFilter("com.example.broadcasttest.aaa.bbb"));
 
         receiver = new NetworkChangeReceiver();
 //        动态注册广播 优点：可以自由控制广播的注册和注销 缺点：必须要在程序启动之后才能收到广播
@@ -38,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
         originally registered here. Are you missing a call to unregisterReceiver()
         */
         unregisterReceiver(receiver);
+
+        // 注销本地广播
+        mLocalBroadcastManager.unregisterReceiver(mLocalReceiver);
     }
 
     public void sendBroadCast(View view) {
@@ -46,6 +63,12 @@ public class MainActivity extends AppCompatActivity {
 //        sendBroadcast(intent);
 //        发送有序广播 权限暂时不用设置，如果设置了响应的权限，那么在广播接收器注册处也要声明响应权限。
         sendOrderedBroadcast(intent, null);
+    }
+
+    public void sendLocalBroadCast(View view) {
+        Intent intent = new Intent("com.example.broadcasttest.aaa.bbb");
+        // 发送本地广播
+        mLocalBroadcastManager.sendBroadcast(intent);
     }
 
     /**
@@ -69,6 +92,15 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(context, "network is unavailable",
                         Toast.LENGTH_SHORT).show();
             }
+        }
+    }
+
+    class LocalReceiver extends BroadcastReceiver {
+        private static final String TAG = "LocalReceiver";
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.d(TAG, "onReceive: " + intent.getAction());
         }
     }
 }
