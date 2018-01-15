@@ -1,16 +1,22 @@
 package com.example.datastoragetest;
 
 import android.content.Context;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.Writer;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -38,4 +44,16 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "writeToFile ok");
     }
 
+    public void readFromFile(View view) throws IOException {
+//        openFileInput将从/data/data/<package name>/files/下读取文件
+//        /data/data/com.example.datastoragetest/files/file_data
+        FileInputStream fis = openFileInput("file_data");
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+        mEditText.setText(br.readLine());
+        br.close();
+        fis.close();
+
+        Log.d(TAG, "read from file ok");
+    }
 }
