@@ -91,4 +91,15 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
         Log.d(TAG, "writeToPs: ok");
     }
+
+    public void readFromPs(View view) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        StringBuilder sb = new StringBuilder();
+        sb.append(sp.getString("name", "defValue"))
+                .append(sp.getInt("age", 0))
+                .append(sp.getFloat("height", 0f))
+                .append(sp.getBoolean("sex", false))
+                .append(sp.getLong("timestamp", 0L));
+        mEditText.setText(sb.toString());
+    }
 }
