@@ -1,7 +1,10 @@
 package com.example.datastoragetest;
 
+import android.app.Application;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -22,12 +25,17 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText mEditText;
 
+    private BaseApplication mApplication;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         mEditText = findViewById(R.id.editText);
+
+
+        mApplication = (BaseApplication) getApplication();
     }
 
     public void writeToFile(View view) throws IOException {
@@ -101,5 +109,16 @@ public class MainActivity extends AppCompatActivity {
                 .append(sp.getBoolean("sex", false))
                 .append(sp.getLong("timestamp", 0L));
         mEditText.setText(sb.toString());
+    }
+
+    public void insert(View view) {
+        ContentValues values = new ContentValues();
+        values.put("name", "第一行代码");
+        values.put("author", "郭霖");
+        values.put("price", 9.9f);
+        values.put("pages", 600);
+        SQLiteDatabase db = mApplication.getSQLiteDatabase();
+        db.insert("Book", null, values);
+        db.close();
     }
 }
