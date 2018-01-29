@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -64,7 +65,16 @@ public class ListBorderRelativeLayout extends RelativeLayout {
      */
     private float mHdTextSize;
 
+    /**
+     * 标题控件
+     */
     private TextView mHdTextView;
+
+    /**
+     * 显示向右徽章
+     */
+    private boolean isShowFtChevronRight;
+    private ImageView mFtChevronRight;
 
     public ListBorderRelativeLayout(Context context) {
         this(context, null);
@@ -91,7 +101,9 @@ public class ListBorderRelativeLayout extends RelativeLayout {
 
         mHdText = ta.getString(R.styleable.ListBorderRelativeLayout_hdText);
         mHdTextColor = ta.getColor(R.styleable.ListBorderRelativeLayout_hdTextColor, Color.BLACK);
-        mHdTextSize = ta.getDimension(R.styleable.ListBorderRelativeLayout_hdTextSize, 15);
+        mHdTextSize = ta.getDimension(R.styleable.ListBorderRelativeLayout_hdTextSize, 11.75f);
+
+        isShowFtChevronRight = ta.getBoolean(R.styleable.ListBorderRelativeLayout_showFtChevronRight, false);
         ta.recycle();
 
         init();
@@ -104,6 +116,13 @@ public class ListBorderRelativeLayout extends RelativeLayout {
         mPaint.setStrokeWidth(mBorderStrokeWidth);
 
         initHdText();
+
+        initFtChevronRight();
+    }
+
+    private void initFtChevronRight() {
+        mFtChevronRight = findViewById(R.id.ft_chevron_right);
+        mFtChevronRight.setVisibility(isShowFtChevronRight ? VISIBLE : GONE);
     }
 
     private void initHdText() {

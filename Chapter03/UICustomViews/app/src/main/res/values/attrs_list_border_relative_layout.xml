@@ -6,6 +6,8 @@
     <attr name="hdTextColor" format="color" />
     <!--标题文字大小-->
     <attr name="hdTextSize" format="dimension" />
+    <!--显示向右徽章-->
+    <attr name="showFtChevronRight" format="boolean" />
     <declare-styleable name="ListBorderRelativeLayout">
         <attr name="borderStrokeWidth"/>
         <attr name="borderColor"/>
@@ -19,6 +21,7 @@
         <attr name="hdText" />
         <attr name="hdTextColor" />
         <attr name="hdTextSize" />
+        <attr name="showFtChevronRight" />
         <!---->
         <!---->
     </declare-styleable>
