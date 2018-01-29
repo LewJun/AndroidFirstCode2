@@ -64,9 +64,9 @@ public class BorderRelativeLayout extends RelativeLayout {
         mBorderStrokeWidth = ta.getFloat(R.styleable.BorderRelativeLayout_borderStrokeWidth, 1.0f);
         mBorderBottomLeftBreakSize = ta.getDimensionPixelSize(R.styleable.BorderRelativeLayout_borderBottomLeftBreakSize, 0);
         mBorderBottomRightBreakSize = ta.getDimensionPixelSize(R.styleable.BorderRelativeLayout_borderBottomRightBreakSize, 0);
-        isNeedTopBorder = ta.getBoolean(R.styleable.BorderRelativeLayout_needTopBorder, true);
-        isNeedLeftAndRightBorder = ta.getBoolean(R.styleable.BorderRelativeLayout_needLeftAndRightBorder, false);
-        isNeedBottomBorder = ta.getBoolean(R.styleable.BorderRelativeLayout_needBottomBorder, true);
+        isNeedTopBorder = ta.getBoolean(R.styleable.BorderRelativeLayout_borderNeedTop, true);
+        isNeedLeftAndRightBorder = ta.getBoolean(R.styleable.BorderRelativeLayout_borderNeedLeftAndRight, false);
+        isNeedBottomBorder = ta.getBoolean(R.styleable.BorderRelativeLayout_borderNeedBottom, true);
         ta.recycle();
         init();
     }
@@ -132,6 +132,21 @@ public class BorderRelativeLayout extends RelativeLayout {
      */
     public void setNeedBottomBorder(boolean needbottomborder) {
         isNeedBottomBorder = needbottomborder;
+        invalidate();
+    }
+
+    public void setBorderBottomLeftBreakSize(int borderBottomLeftBreakSize) {
+        mBorderBottomLeftBreakSize = borderBottomLeftBreakSize;
+        invalidate();
+    }
+
+    public void setBorderBottomRightBreakSize(int borderBottomRightBreakSize) {
+        mBorderBottomRightBreakSize = borderBottomRightBreakSize;
+        invalidate();
+    }
+
+    public void setNeedLeftAndRightBorder(boolean needLeftAndRightBorder) {
+        isNeedLeftAndRightBorder = needLeftAndRightBorder;
         invalidate();
     }
 }
