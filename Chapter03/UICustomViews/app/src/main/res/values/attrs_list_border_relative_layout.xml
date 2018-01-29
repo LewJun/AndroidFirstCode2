@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--标题文字-->
+    <attr name="hdText" format="string" />
+    <!--标题文字颜色-->
+    <attr name="hdTextColor" format="color" />
+    <!--标题文字大小-->
+    <attr name="hdTextSize" format="dimension" />
+    <declare-styleable name="ListBorderRelativeLayout">
+        <attr name="borderStrokeWidth"/>
+        <attr name="borderColor"/>
+        <attr name="borderBottomLeftBreakSize"/>
+        <attr name="borderBottomRightBreakSize"/>
+        <attr name="borderNeedTop"/>
+        <attr name="borderNeedLeftAndRight"/>
+        <attr name="borderNeedBottom"/>
+        <!---->
+        <!---->
+        <attr name="hdText" />
+        <attr name="hdTextColor" />
+        <attr name="hdTextSize" />
+        <!---->
+        <!---->
+    </declare-styleable>
+</resources>
