@@ -2,9 +2,11 @@ package com.example.uicustomviews.customview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
@@ -96,6 +98,15 @@ public class ListBorderRelativeLayout extends RelativeLayout {
      */
     private TextView mFtTextView;
 
+    /**
+     * 是否显示头部icon
+     */
+    private boolean isShowHdIcon;
+
+    private ImageView mHdIcon;
+    private Drawable mHdIconSrc;
+    private Bitmap mHdIconBitmap;
+
 
     public ListBorderRelativeLayout(Context context) {
         this(context, null);
@@ -132,6 +143,10 @@ public class ListBorderRelativeLayout extends RelativeLayout {
         mFtTextColor = ta.getColor(R.styleable.ListBorderRelativeLayout_ftTextColor, Color.GRAY);
 //        mFtTextSize = ta.getDimension(R.styleable.ListBorderRelativeLayout_ftTextSize, 9f);
 
+
+        isShowHdIcon = ta.getBoolean(R.styleable.ListBorderRelativeLayout_showHdIcon, false);
+        mHdIconSrc = ta.getDrawable(R.styleable.ListBorderRelativeLayout_hdIconSrc);
+
         ta.recycle();
 
         init();
@@ -148,6 +163,18 @@ public class ListBorderRelativeLayout extends RelativeLayout {
         initFtChevronRight();
 
         initFtText();
+
+        initHdIcon();
+    }
+
+    private void initHdIcon() {
+        mHdIcon = findViewById(R.id.hd_icon);
+        if(isShowHdIcon) {
+            mHdIcon.setVisibility(VISIBLE);
+            mHdIcon.setImageDrawable(mHdIconSrc);
+        } else {
+            mHdIcon.setVisibility(GONE);
+        }
     }
 
     private void initFtText() {
@@ -289,4 +316,16 @@ public class ListBorderRelativeLayout extends RelativeLayout {
         mFtTextView.setTextSize(mFtTextSize);
         invalidate();
     }*/
+
+    public void setShowHdIcon(boolean showHdIcon) {
+        isShowHdIcon = showHdIcon;
+        mHdIcon.setVisibility(isShowHdIcon ? VISIBLE : GONE);
+        invalidate();
+    }
+
+    public void setHdIconBitmap(Bitmap hdIconBitmap) {
+        mHdIconBitmap = hdIconBitmap;
+        mHdIcon.setImageBitmap(mHdIconBitmap);
+        invalidate();
+    }
 }

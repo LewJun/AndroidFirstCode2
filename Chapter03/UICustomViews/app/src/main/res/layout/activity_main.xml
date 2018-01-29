@@ -71,4 +71,16 @@
         app:ftText="@string/app_name"
         />
 
+    <com.example.uicustomviews.customview.ListBorderRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        app:borderNeedTop="false"
+        app:hdText="@string/app_name"
+        app:showFtChevronRight="true"
+        app:ftText="@string/app_name"
+        app:showHdIcon="true"
+        app:hdIconSrc="@drawable/ic_person_black_24dp"
+        />
+
 </LinearLayout>

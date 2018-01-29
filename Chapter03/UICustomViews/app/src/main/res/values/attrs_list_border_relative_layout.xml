@@ -17,6 +17,11 @@
     <!--标题文字大小-->
     <attr name="ftTextSize" format="dimension" />
 
+    <!--显示头部图片-->
+    <attr name="showHdIcon" format="boolean" />
+    <!--显示头部图片资源-->
+    <attr name="hdIconSrc" format="reference" />
+
     <declare-styleable name="ListBorderRelativeLayout">
         <attr name="borderStrokeWidth"/>
         <attr name="borderColor"/>
@@ -35,5 +40,8 @@
         <attr name="ftText" />
         <attr name="ftTextColor" />
         <!--<attr name="ftTextSize" />-->
+        <!---->
+        <attr name="showHdIcon"/>
+        <attr name="hdIconSrc"/>
     </declare-styleable>
 </resources>
