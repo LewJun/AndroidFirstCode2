@@ -45,6 +45,7 @@ public class TitleLayout extends LinearLayout {
         TextView tv_title = findViewById(R.id.tv_title);
         tv_title.setText(typedArray.getString(R.styleable.TitleLayout_title));
         tv_title.setTextColor(typedArray.getColor(R.styleable.TitleLayout_titleColor, getResources().getColor(R.color.colorAccent)));
+        typedArray.recycle();
     }
 
 }
