@@ -50,7 +50,6 @@
         app:borderNeedTop="false"
         app:borderColor="@color/colorAccent"
         app:hdText="@string/app_name"
-        app:hdTextSize="18sp"
         />
 
     <com.example.uicustomviews.customview.ListBorderRelativeLayout

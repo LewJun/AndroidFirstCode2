@@ -28,12 +28,12 @@
         <!---->
         <attr name="hdText" />
         <attr name="hdTextColor" />
-        <attr name="hdTextSize" />
+        <!--<attr name="hdTextSize" />-->
         <!---->
         <attr name="showFtChevronRight" />
         <!---->
         <attr name="ftText" />
         <attr name="ftTextColor" />
-        <attr name="ftTextSize" />
+        <!--<attr name="ftTextSize" />-->
     </declare-styleable>
 </resources>

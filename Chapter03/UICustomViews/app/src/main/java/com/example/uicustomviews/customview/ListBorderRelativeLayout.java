@@ -64,7 +64,7 @@ public class ListBorderRelativeLayout extends RelativeLayout {
     /**
      * 标题大小
      */
-    private float mHdTextSize;
+//    private float mHdTextSize;
 
     /**
      * 标题控件
@@ -79,20 +79,20 @@ public class ListBorderRelativeLayout extends RelativeLayout {
 
 
     /**
-     * 标题文字
+     * 尾部描述文字文字
      */
     private String mFtText;
     /**
-     * 标题颜色
+     * 尾部描述文字颜色
      */
     private int mFtTextColor;
     /**
-     * 标题大小
+     * 尾部描述文字大小
      */
-    private float mFtTextSize;
+//    private float mFtTextSize;
 
     /**
-     * 标题控件
+     * 尾部描述文字控件
      */
     private TextView mFtTextView;
 
@@ -122,7 +122,7 @@ public class ListBorderRelativeLayout extends RelativeLayout {
 
         mHdText = ta.getString(R.styleable.ListBorderRelativeLayout_hdText);
         mHdTextColor = ta.getColor(R.styleable.ListBorderRelativeLayout_hdTextColor, Color.BLACK);
-        mHdTextSize = ta.getDimension(R.styleable.ListBorderRelativeLayout_hdTextSize, 11.75f);
+//        mHdTextSize = ta.getDimension(R.styleable.ListBorderRelativeLayout_hdTextSize, 11.75f);
 
         isShowFtChevronRight = ta.getBoolean(R.styleable.ListBorderRelativeLayout_showFtChevronRight, false);
 
@@ -130,7 +130,7 @@ public class ListBorderRelativeLayout extends RelativeLayout {
 
         mFtText = ta.getString(R.styleable.ListBorderRelativeLayout_ftText);
         mFtTextColor = ta.getColor(R.styleable.ListBorderRelativeLayout_ftTextColor, Color.GRAY);
-        mFtTextSize = ta.getDimension(R.styleable.ListBorderRelativeLayout_ftTextSize, 9f);
+//        mFtTextSize = ta.getDimension(R.styleable.ListBorderRelativeLayout_ftTextSize, 9f);
 
         ta.recycle();
 
@@ -157,7 +157,7 @@ public class ListBorderRelativeLayout extends RelativeLayout {
             mFtTextView.setText(mFtText);
             mFtTextView.setTextColor(mFtTextColor);
 //        由于传入的值被转换成了PX，所以这里使用单位TypedValue.COMPLEX_UNIT_PX
-            mFtTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mFtTextSize);
+//            mFtTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mFtTextSize);
         } else {
             mFtTextView.setVisibility(GONE);
         }
@@ -173,7 +173,7 @@ public class ListBorderRelativeLayout extends RelativeLayout {
         mHdTextView.setText(mHdText);
         mHdTextView.setTextColor(mHdTextColor);
 //        由于传入的值被转换成了PX，所以这里使用单位TypedValue.COMPLEX_UNIT_PX
-        mHdTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mHdTextSize);
+//        mHdTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mHdTextSize);
     }
 
     @Override
@@ -260,11 +260,11 @@ public class ListBorderRelativeLayout extends RelativeLayout {
         invalidate();
     }
 
-    public void setHdTextSize(float hdTextSize) {
+/*    public void setHdTextSize(float hdTextSize) {
         mHdTextSize = hdTextSize;
         mHdTextView.setTextSize(mHdTextSize);
         invalidate();
-    }
+    }*/
 
     public void setShowFtChevronRight(boolean showFtChevronRight) {
         isShowFtChevronRight = showFtChevronRight;
@@ -284,9 +284,9 @@ public class ListBorderRelativeLayout extends RelativeLayout {
         invalidate();
     }
 
-    public void setFtTextSize(float ftTextSize) {
+/*    public void setFtTextSize(float ftTextSize) {
         mFtTextSize = ftTextSize;
         mFtTextView.setTextSize(mFtTextSize);
         invalidate();
-    }
+    }*/
 }
