@@ -61,7 +61,7 @@ public class BorderRelativeLayout extends RelativeLayout {
         // 获取自定义属性
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.BorderRelativeLayout);
         mBorderColor = ta.getColor(R.styleable.BorderRelativeLayout_borderColor, Color.GRAY);
-        mBorderStrokeWidth = ta.getFloat(R.styleable.BorderRelativeLayout_borderStrokeWidth, 0f);
+        mBorderStrokeWidth = ta.getFloat(R.styleable.BorderRelativeLayout_borderStrokeWidth, 1.0f);
         mBorderBottomLeftBreakSize = ta.getDimensionPixelSize(R.styleable.BorderRelativeLayout_borderBottomLeftBreakSize, 0);
         mBorderBottomRightBreakSize = ta.getDimensionPixelSize(R.styleable.BorderRelativeLayout_borderBottomRightBreakSize, 0);
         isNeedTopBorder = ta.getBoolean(R.styleable.BorderRelativeLayout_needTopBorder, true);
