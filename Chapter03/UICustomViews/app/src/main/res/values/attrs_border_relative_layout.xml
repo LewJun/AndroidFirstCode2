@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--边框的粗度-->
-    <attr name="borderStrokeWidth" format="float" />
+    <attr name="borderStrokeWidth" format="dimension" />
     <!--边框颜色-->
     <attr name="borderColor" format="color"/>
     <!--底边边线左边断开距离-->

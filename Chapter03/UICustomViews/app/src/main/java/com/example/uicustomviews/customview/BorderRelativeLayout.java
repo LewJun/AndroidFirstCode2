@@ -29,11 +29,11 @@ public class BorderRelativeLayout extends RelativeLayout {
     /**
      * 底边边线左边断开距离
      */
-    private int mBorderBottomLeftBreakSize;
+    private float mBorderBottomLeftBreakSize;
     /**
      * 底边边线右边断开距离
      */
-    private int mBorderBottomRightBreakSize;
+    private float mBorderBottomRightBreakSize;
     /**
      * 是否需要上边框
      */
@@ -61,9 +61,9 @@ public class BorderRelativeLayout extends RelativeLayout {
         // 获取自定义属性
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.BorderRelativeLayout);
         mBorderColor = ta.getColor(R.styleable.BorderRelativeLayout_borderColor, Color.GRAY);
-        mBorderStrokeWidth = ta.getFloat(R.styleable.BorderRelativeLayout_borderStrokeWidth, 1.0f);
-        mBorderBottomLeftBreakSize = ta.getDimensionPixelSize(R.styleable.BorderRelativeLayout_borderBottomLeftBreakSize, 0);
-        mBorderBottomRightBreakSize = ta.getDimensionPixelSize(R.styleable.BorderRelativeLayout_borderBottomRightBreakSize, 0);
+        mBorderStrokeWidth = ta.getDimension(R.styleable.BorderRelativeLayout_borderStrokeWidth, 1.0f);
+        mBorderBottomLeftBreakSize = ta.getDimension(R.styleable.BorderRelativeLayout_borderBottomLeftBreakSize, 0f);
+        mBorderBottomRightBreakSize = ta.getDimension(R.styleable.BorderRelativeLayout_borderBottomRightBreakSize, 0f);
         isNeedTopBorder = ta.getBoolean(R.styleable.BorderRelativeLayout_borderNeedTop, true);
         isNeedLeftAndRightBorder = ta.getBoolean(R.styleable.BorderRelativeLayout_borderNeedLeftAndRight, false);
         isNeedBottomBorder = ta.getBoolean(R.styleable.BorderRelativeLayout_borderNeedBottom, true);
@@ -135,12 +135,12 @@ public class BorderRelativeLayout extends RelativeLayout {
         invalidate();
     }
 
-    public void setBorderBottomLeftBreakSize(int borderBottomLeftBreakSize) {
+    public void setBorderBottomLeftBreakSize(float borderBottomLeftBreakSize) {
         mBorderBottomLeftBreakSize = borderBottomLeftBreakSize;
         invalidate();
     }
 
-    public void setBorderBottomRightBreakSize(int borderBottomRightBreakSize) {
+    public void setBorderBottomRightBreakSize(float borderBottomRightBreakSize) {
         mBorderBottomRightBreakSize = borderBottomRightBreakSize;
         invalidate();
     }

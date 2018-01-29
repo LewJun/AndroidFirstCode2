@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context="com.example.uicustomviews.MainActivity">
 
-    <!--<include layout="@layout/title" />-->
+    <!--<include layout="@laylayout_titleitle" />-->
 
     <com.example.uicustomviews.customview.TitleLayout
         android:layout_width="match_parent"
@@ -20,9 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        app:needTopBorder="false"
-        app:borderColor="@color/colorAccent"
-        app:borderStrokeWidth="3.0">
+        app:borderNeedTop="false">
 
         <TextView
             android:layout_width="wrap_content"
@@ -30,17 +28,5 @@
             android:text="@string/app_name" />
     </com.example.uicustomviews.customview.BorderRelativeLayout>
 
-    <com.example.uicustomviews.customview.BorderRelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="8dp"
-        app:needTopBorder="false"
-        app:borderColor="@color/colorAccent"
-        app:borderStrokeWidth="3.0">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/app_name" />
-    </com.example.uicustomviews.customview.BorderRelativeLayout>
 </LinearLayout>
