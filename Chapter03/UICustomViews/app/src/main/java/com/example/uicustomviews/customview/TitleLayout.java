@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.example.uicustomviews.R;
 
 /**
- * 1 创建布局文件 R.layout.title
+ * 1 创建布局文件 R.layout.layout_title
  * 2 创建attrs_title_layout 自定义属性
  * 3 创建TitleLayout 添加交互，得到自定义属性值并设置到对应控件
  * 4 在页面使用TitleLayout
@@ -25,7 +25,7 @@ public class TitleLayout extends LinearLayout {
     public TitleLayout(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         // this, 表示给加载好的布局添加一个父布局
-        LayoutInflater.from(context).inflate(R.layout.title, this);
+        LayoutInflater.from(context).inflate(R.layout.layout_title, this);
         init(attrs);
 
         findViewById(R.id.btn_back).setOnClickListener(v -> {
