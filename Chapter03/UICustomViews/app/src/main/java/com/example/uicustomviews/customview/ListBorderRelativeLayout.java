@@ -107,6 +107,10 @@ public class ListBorderRelativeLayout extends RelativeLayout {
     private Drawable mHdIconSrc;
     private Bitmap mHdIconBitmap;
 
+    private String mHdTextSub;
+    private int mHdTextSubColor;
+    private TextView mHdTextSubView;
+
 
     public ListBorderRelativeLayout(Context context) {
         this(context, null);
@@ -147,6 +151,9 @@ public class ListBorderRelativeLayout extends RelativeLayout {
         isShowHdIcon = ta.getBoolean(R.styleable.ListBorderRelativeLayout_showHdIcon, false);
         mHdIconSrc = ta.getDrawable(R.styleable.ListBorderRelativeLayout_hdIconSrc);
 
+        mHdTextSub = ta.getString(R.styleable.ListBorderRelativeLayout_hdTextSub);
+        mHdTextSubColor = ta.getColor(R.styleable.ListBorderRelativeLayout_hdTextSubColor, Color.GRAY);
+
         ta.recycle();
 
         init();
@@ -160,11 +167,24 @@ public class ListBorderRelativeLayout extends RelativeLayout {
 
         initHdText();
 
+        initHdTextSub();
+
         initFtChevronRight();
 
         initFtText();
 
         initHdIcon();
+    }
+
+    private void initHdTextSub() {
+        mHdTextSubView = findViewById(R.id.hd_text_sub);
+        if(TextUtils.isEmpty(mHdTextSub)) {
+            mHdTextSubView.setVisibility(GONE);
+        } else {
+            mHdTextSubView.setVisibility(VISIBLE);
+            mHdTextSubView.setText(mHdTextSub);
+            mHdTextSubView.setTextColor(mHdTextSubColor);
+        }
     }
 
     private void initHdIcon() {
@@ -326,6 +346,18 @@ public class ListBorderRelativeLayout extends RelativeLayout {
     public void setHdIconBitmap(Bitmap hdIconBitmap) {
         mHdIconBitmap = hdIconBitmap;
         mHdIcon.setImageBitmap(mHdIconBitmap);
+        invalidate();
+    }
+
+    public void setHdTextSub(String hdTextSub) {
+        mHdTextSub = hdTextSub;
+        mHdTextSubView.setText(mHdTextSub);
+        invalidate();
+    }
+
+    public void setHdTextSubColor(int hdTextSubColor) {
+        mHdTextSubColor = hdTextSubColor;
+        mHdTextSubView.setTextColor(mHdTextSubColor);
         invalidate();
     }
 }

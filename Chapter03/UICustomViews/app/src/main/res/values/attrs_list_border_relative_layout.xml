@@ -22,6 +22,11 @@
     <!--显示头部图片资源-->
     <attr name="hdIconSrc" format="reference" />
 
+    <!--副标题文字-->
+    <attr name="hdTextSub" format="string" />
+    <!--副标题文字颜色-->
+    <attr name="hdTextSubColor" format="color" />
+
     <declare-styleable name="ListBorderRelativeLayout">
         <attr name="borderStrokeWidth"/>
         <attr name="borderColor"/>
@@ -43,5 +48,8 @@
         <!---->
         <attr name="showHdIcon"/>
         <attr name="hdIconSrc"/>
+        <!---->
+        <attr name="hdTextSub" />
+        <attr name="hdTextSubColor" />
     </declare-styleable>
 </resources>

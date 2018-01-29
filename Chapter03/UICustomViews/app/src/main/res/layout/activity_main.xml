@@ -19,7 +19,7 @@
         android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:padding="12dp"
         app:borderNeedTop="false">
 
         <TextView
@@ -32,7 +32,7 @@
         android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:padding="12dp"
         app:borderNeedTop="false"
         app:borderStrokeWidth="2dp"
         >
@@ -46,7 +46,7 @@
     <com.example.uicustomviews.customview.ListBorderRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:padding="12dp"
         app:borderNeedTop="false"
         app:borderColor="@color/colorAccent"
         app:hdText="@string/app_name"
@@ -55,7 +55,7 @@
     <com.example.uicustomviews.customview.ListBorderRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:padding="12dp"
         app:borderNeedTop="false"
         app:hdText="@string/app_name"
         app:showFtChevronRight="true"
@@ -64,7 +64,7 @@
     <com.example.uicustomviews.customview.ListBorderRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:padding="12dp"
         app:borderNeedTop="false"
         app:hdText="@string/app_name"
         app:showFtChevronRight="true"
@@ -74,13 +74,26 @@
     <com.example.uicustomviews.customview.ListBorderRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
+        android:padding="12dp"
         app:borderNeedTop="false"
         app:hdText="@string/app_name"
         app:showFtChevronRight="true"
         app:ftText="@string/app_name"
         app:showHdIcon="true"
         app:hdIconSrc="@drawable/ic_person_black_24dp"
+        />
+
+    <com.example.uicustomviews.customview.ListBorderRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        app:borderNeedTop="false"
+        app:hdText="@string/app_name"
+        app:showFtChevronRight="true"
+        app:ftText="@string/app_name"
+        app:showHdIcon="true"
+        app:hdIconSrc="@drawable/ic_person_black_24dp"
+        app:hdTextSub="@string/app_name"
         />
 
 </LinearLayout>
