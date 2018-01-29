@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -76,6 +77,26 @@ public class ListBorderRelativeLayout extends RelativeLayout {
     private boolean isShowFtChevronRight;
     private ImageView mFtChevronRight;
 
+
+    /**
+     * 标题文字
+     */
+    private String mFtText;
+    /**
+     * 标题颜色
+     */
+    private int mFtTextColor;
+    /**
+     * 标题大小
+     */
+    private float mFtTextSize;
+
+    /**
+     * 标题控件
+     */
+    private TextView mFtTextView;
+
+
     public ListBorderRelativeLayout(Context context) {
         this(context, null);
     }
@@ -104,6 +125,13 @@ public class ListBorderRelativeLayout extends RelativeLayout {
         mHdTextSize = ta.getDimension(R.styleable.ListBorderRelativeLayout_hdTextSize, 11.75f);
 
         isShowFtChevronRight = ta.getBoolean(R.styleable.ListBorderRelativeLayout_showFtChevronRight, false);
+
+
+
+        mFtText = ta.getString(R.styleable.ListBorderRelativeLayout_ftText);
+        mFtTextColor = ta.getColor(R.styleable.ListBorderRelativeLayout_ftTextColor, Color.GRAY);
+        mFtTextSize = ta.getDimension(R.styleable.ListBorderRelativeLayout_ftTextSize, 9f);
+
         ta.recycle();
 
         init();
@@ -118,6 +146,21 @@ public class ListBorderRelativeLayout extends RelativeLayout {
         initHdText();
 
         initFtChevronRight();
+
+        initFtText();
+    }
+
+    private void initFtText() {
+        mFtTextView = findViewById(R.id.ft_text);
+        if(!TextUtils.isEmpty(mFtText)) {
+            mFtTextView.setVisibility(VISIBLE);
+            mFtTextView.setText(mFtText);
+            mFtTextView.setTextColor(mFtTextColor);
+//        由于传入的值被转换成了PX，所以这里使用单位TypedValue.COMPLEX_UNIT_PX
+            mFtTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, mFtTextSize);
+        } else {
+            mFtTextView.setVisibility(GONE);
+        }
     }
 
     private void initFtChevronRight() {
@@ -220,6 +263,30 @@ public class ListBorderRelativeLayout extends RelativeLayout {
     public void setHdTextSize(float hdTextSize) {
         mHdTextSize = hdTextSize;
         mHdTextView.setTextSize(mHdTextSize);
+        invalidate();
+    }
+
+    public void setShowFtChevronRight(boolean showFtChevronRight) {
+        isShowFtChevronRight = showFtChevronRight;
+        mFtChevronRight.setVisibility(isShowFtChevronRight ? VISIBLE : GONE);
+        invalidate();
+    }
+
+    public void setFtText(String ftText) {
+        mFtText = ftText;
+        mFtTextView.setText(mFtText);
+        invalidate();
+    }
+
+    public void setFtTextColor(int ftTextColor) {
+        mFtTextColor = ftTextColor;
+        mFtTextView.setTextColor(mFtTextColor);
+        invalidate();
+    }
+
+    public void setFtTextSize(float ftTextSize) {
+        mFtTextSize = ftTextSize;
+        mFtTextView.setTextSize(mFtTextSize);
         invalidate();
     }
 }
