@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">UICustomViews</string>
+    <!--正斜线-->
+    <string name="slash">/</string>
+    <string name="sign">考勤</string>
+    <string name="check">晨检</string>
+    <string name="helth">健康检查</string>
 </resources>

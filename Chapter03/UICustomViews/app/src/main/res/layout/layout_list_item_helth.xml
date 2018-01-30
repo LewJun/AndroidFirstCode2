@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tv_health_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="情绪" />
+
+    <com.example.uicustomviews.customview.BorderRelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/p16"
+        android:paddingBottom="@dimen/p16"
+        android:paddingLeft="@dimen/p8"
+        android:paddingRight="@dimen/p8"
+        android:paddingTop="@dimen/p16"
+        app:borderNeedTop="false"
+        app:borderStrokeWidth="3dp">
+
+        <com.example.uicustomviews.customview.FlowRadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:button="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="睡眠两小时" />
+
+            <RadioButton
+                android:button="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="入睡困难" />
+
+            <RadioButton
+                android:button="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="不睡" />
+
+            <RadioButton
+                android:button="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="不睡2" />
+
+            <RadioButton
+                android:button="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="不睡2" />
+
+            <RadioButton
+                android:button="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="不睡2" />
+
+            <RadioButton
+                android:button="@null"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="不睡2" />
+        </com.example.uicustomviews.customview.FlowRadioGroup>
+
+    </com.example.uicustomviews.customview.BorderRelativeLayout>
+</LinearLayout>
