@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <!--考勤时间-->
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/app_name" />
+
+    <!--考勤类型-->
+    <TextView
+        android:id="@+id/tv_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="@string/app_name" />
+
+    <!--疾病信息-->
+    <TextView
+        android:id="@+id/tv_disease"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_time"
+        android:text="@string/app_name" />
+
+    <!--症状-->
+    <TextView
+        android:id="@+id/tv_symptoms"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_disease"
+        android:text="@string/app_name" />
+
+    <!--请假时间-->
+    <TextView
+        android:id="@+id/tv_leave_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_symptoms"
+        android:text="@string/app_name" />
+
+    <!--请假天数-->
+    <TextView
+        android:id="@+id/tv_leave_days"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/tv_leave_time"
+        android:text="@string/app_name" />
+
+</RelativeLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?><!--区别于list_item_2是desc1有颜色-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:padding="16dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/image"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/image"
+        android:text="@string/app_name" />
+
+    <TextView
+        android:id="@+id/desc1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/right_icon"
+        android:text="@string/app_name"
+        android:textColor="@color/colorAccent" />
+
+    <ImageView
+        android:id="@+id/right_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_chevron_right_black_24dp" />
+</RelativeLayout>

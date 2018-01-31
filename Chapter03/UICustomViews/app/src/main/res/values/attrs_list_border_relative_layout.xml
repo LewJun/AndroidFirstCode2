@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--标题文字-->
+    <attr name="hdText" format="string" />
+    <!--标题文字颜色-->
+    <attr name="hdTextColor" format="color" />
+    <!--标题文字大小-->
+    <attr name="hdTextSize" format="dimension" />
+
+    <!--显示向右徽章-->
+    <attr name="showFtChevronRight" format="boolean" />
+
+    <!--标题文字-->
+    <attr name="ftText" format="string" />
+    <!--标题文字颜色-->
+    <attr name="ftTextColor" format="color" />
+    <!--标题文字大小-->
+    <attr name="ftTextSize" format="dimension" />
+
+    <!--显示头部图片-->
+    <attr name="showHdIcon" format="boolean" />
+    <!--显示头部图片资源-->
+    <attr name="hdIconSrc" format="reference" />
+
+    <!--副标题文字-->
+    <attr name="hdTextSub" format="string" />
+    <!--副标题文字颜色-->
+    <attr name="hdTextSubColor" format="color" />
+
+    <declare-styleable name="ListBorderRelativeLayout">
+        <attr name="borderStrokeWidth"/>
+        <attr name="borderColor"/>
+        <attr name="borderBottomLeftBreakSize"/>
+        <attr name="borderBottomRightBreakSize"/>
+        <attr name="borderNeedTop"/>
+        <attr name="borderNeedLeftAndRight"/>
+        <attr name="borderNeedBottom"/>
+        <!---->
+        <attr name="hdText" />
+        <attr name="hdTextColor" />
+        <!--<attr name="hdTextSize" />-->
+        <!---->
+        <attr name="showFtChevronRight" />
+        <!---->
+        <attr name="ftText" />
+        <attr name="ftTextColor" />
+        <!--<attr name="ftTextSize" />-->
+        <!---->
+        <attr name="showHdIcon"/>
+        <attr name="hdIconSrc"/>
+        <!---->
+        <attr name="hdTextSub" />
+        <attr name="hdTextSubColor" />
+    </declare-styleable>
+</resources>
