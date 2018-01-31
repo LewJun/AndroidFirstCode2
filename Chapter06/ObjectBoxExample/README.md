@@ -225,3 +225,8 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 ```
+
+## FAQ
+* minSdkVersion >= 15
+* box.get(id > 0)，id必须大于0，java.lang.IllegalArgumentException: Illegal key value: 0
+* 
