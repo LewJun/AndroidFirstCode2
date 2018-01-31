@@ -15,6 +15,10 @@
         app:title="Main"
         app:titleColor="#ffff00" />
 
+    <com.example.uicustomviews.customview.DateSelectorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <com.example.uicustomviews.customview.BorderRelativeLayout
         android:layout_marginTop="8dp"
         android:layout_width="match_parent"
