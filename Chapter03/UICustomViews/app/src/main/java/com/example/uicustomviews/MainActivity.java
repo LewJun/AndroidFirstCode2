@@ -8,8 +8,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.uicustomviews.customview.DateSelectorLayout;
+
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
 
+    DateSelectorLayout mDateSelectorLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,5 +41,18 @@ public class MainActivity extends AppCompatActivity {
                 popupMenu.show();
             }
         });
+
+        mDateSelectorLayout = findViewById(R.id.dateSelectorLayout);
+
+        mDateSelectorLayout.setOnDateChangeListener(onDateChangeListener);
     }
+
+    DateSelectorLayout.OnDateChangeListener onDateChangeListener = new DateSelectorLayout.OnDateChangeListener() {
+        @Override
+        public void action(Date oldDate, Date newDate) {
+            Toast.makeText(MainActivity.this
+                    , "old date " + oldDate + ", new date " + newDate
+                    , Toast.LENGTH_SHORT).show();
+        }
+    };
 }

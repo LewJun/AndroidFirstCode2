@@ -30,14 +30,22 @@ public class DateSelectorLayout extends LinearLayout {
     private Button btn_next_day;
     private TextView tv_curr_day;
     private Context mContext;
+    private OnDateChangeListener mOnDateChangeListener;
+
+    public String getTvCurrDateStr() {
+        return tv_curr_day.getText().toString();
+    }
 
     public Date getTvCurrDate() {
-        String s = tv_curr_day.getText().toString();
-        return DateUtil.getDate1(s);
+        return DateUtil.getDate1(getTvCurrDateStr());
     }
 
     public void setTvCurrDate(Date date) {
-        tv_curr_day.setText(DateUtil.getDate1(date));
+        if (!DateUtil.getDate1(date).equals(getTvCurrDateStr())) {
+            Date oldDate = getTvCurrDate();
+            tv_curr_day.setText(DateUtil.getDate1(date));
+            mOnDateChangeListener.action(oldDate, date);
+        }
     }
 
     private OnClickListener tvCurrDayListener = new OnClickListener() {
@@ -162,5 +170,16 @@ public class DateSelectorLayout extends LinearLayout {
         btn_pre_day.setOnClickListener(btnPreDayListener);
         btn_next_day = findViewById(R.id.btn_next_day);
         btn_next_day.setOnClickListener(btnNextDayListener);
+    }
+
+    public void setOnDateChangeListener(OnDateChangeListener onDateChangeListener) {
+        mOnDateChangeListener = onDateChangeListener;
+    }
+
+    /**
+     * 日期改变监听器
+     */
+    public interface OnDateChangeListener {
+        void action(Date oldDate, Date newDate);
     }
 }

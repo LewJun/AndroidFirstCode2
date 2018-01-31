@@ -16,6 +16,7 @@
         app:titleColor="#ffff00" />
 
     <com.example.uicustomviews.customview.DateSelectorLayout
+        android:id="@+id/dateSelectorLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
