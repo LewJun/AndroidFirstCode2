@@ -82,6 +82,26 @@
             android:layout_height="wrap_content"
             android:onClick="toMany"
             android:text="to many" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="treeNode"
+            android:text="tree node" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="getTreeNode"
+            android:text="getTreeNode" />
     </LinearLayout>
 
 

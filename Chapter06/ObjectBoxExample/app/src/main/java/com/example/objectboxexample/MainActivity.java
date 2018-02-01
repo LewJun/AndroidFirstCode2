@@ -8,11 +8,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.model.ApiResult;
+import com.example.model.CheckItem;
+import com.example.model.CheckItem_;
 import com.example.model.Customer;
 import com.example.model.Note;
 import com.example.model.Note_;
 import com.example.model.Order;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.Date;
 import java.util.List;
 
@@ -20,6 +26,7 @@ import io.objectbox.Box;
 import io.objectbox.BoxStore;
 import io.objectbox.query.PropertyQuery;
 import io.objectbox.query.Query;
+import io.objectbox.relation.ToMany;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
@@ -54,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
     private Box<Order> mOrderBox;
     private Query<Order> mOrderQuery;
 
+    private Box<CheckItem> mCheckItemBox;
+    private Query<CheckItem> mCheckItemQuery;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
         mCustomerBox = boxStore.boxFor(Customer.class);
 
         mOrderBox = boxStore.boxFor(Order.class);
+
+        mCheckItemBox = boxStore.boxFor(CheckItem.class);
 
     }
 
@@ -206,5 +219,141 @@ public class MainActivity extends AppCompatActivity {
         for (Order order : customer.orders) {
             Log.d(TAG, "toMany: order " + order);
         }
+    }
+
+    public void treeNode(View view) {
+        // 模拟数据来源于服务器返回的json
+        String jsonStr = "{\n" +
+                "  \"code\": 1,\n" +
+                "  \"errmsg\": \"ok\",\n" +
+                "  \"data\": [\n" +
+                "    {\n" +
+                "      \"itemCode\": \"11\",\n" +
+                "      \"itemName\": \"受伤\",\n" +
+                "      \"itemSub\": [\n" +
+                "        {\n" +
+                "          \"itemCode\": \"11001\",\n" +
+                "          \"itemName\": \"手\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "          \"itemCode\": \"11002\",\n" +
+                "          \"itemName\": \"足\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "          \"itemCode\": \"11003\",\n" +
+                "          \"itemName\": \"头\"\n" +
+                "        }\n" +
+                "      ]\n" +
+                "    },\n" +
+                "    {\n" +
+                "      \"itemCode\": \"22\",\n" +
+                "      \"itemName\": \"皮疹\",\n" +
+                "      \"itemSub\": [\n" +
+                "        {\n" +
+                "          \"itemCode\": \"22001\",\n" +
+                "          \"itemName\": \"手\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "          \"itemCode\": \"22002\",\n" +
+                "          \"itemName\": \"足\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "          \"itemCode\": \"22003\",\n" +
+                "          \"itemName\": \"脸\"\n" +
+                "        }\n" +
+                "      ]\n" +
+                "    },\n" +
+                "    {\n" +
+                "      \"itemCode\": \"33\",\n" +
+                "      \"itemName\": \"疱疹\",\n" +
+                "      \"itemSub\": [\n" +
+                "        {\n" +
+                "          \"itemCode\": \"33001\",\n" +
+                "          \"itemName\": \"手\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "          \"itemCode\": \"33002\",\n" +
+                "          \"itemName\": \"足\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "          \"itemCode\": \"33003\",\n" +
+                "          \"itemName\": \"脸\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "          \"itemCode\": \"33004\",\n" +
+                "          \"itemName\": \"口腔\"\n" +
+                "        }\n" +
+                "      ]\n" +
+                "    },\n" +
+                "    {\n" +
+                "      \"itemCode\": \"234234\",\n" +
+                "      \"itemName\": \"红眼\"\n" +
+                "    },\n" +
+                "    {\n" +
+                "      \"itemCode\": \"6345224\",\n" +
+                "      \"itemName\": \"感冒\"\n" +
+                "    },\n" +
+                "    {\n" +
+                "      \"itemCode\": \"63456454\",\n" +
+                "      \"itemName\": \"咳嗽\"\n" +
+                "    }\n" +
+                "  ]\n" +
+                "}\n";
+
+        Gson gson = new Gson();
+        Type typeOfT = new TypeToken<ApiResult<List<CheckItem>>>(){}.getType();
+        ApiResult<List<CheckItem>> apiResult = gson.fromJson(jsonStr, typeOfT);
+        Log.d(TAG, "apiResult: " + apiResult);
+        List<CheckItem> checkItems = apiResult.data;
+        for (CheckItem checkItem : checkItems) {
+            Log.d(TAG, "checkItem: " + checkItem);
+            if (checkItem.itemSub != null) {
+                // 添加子项
+                checkItem.children.addAll(checkItem.itemSub);
+            }
+            // 将第一级设置为1
+            checkItem.level = 1;
+            // 持久化
+            mCheckItemBox.put(checkItem);
+
+            Log.d(TAG, "after put: " + checkItem);
+        }
+    }
+
+    public void getTreeNode(View view) {
+        List<CheckItem> checkItems = mCheckItemBox.getAll();
+        for (CheckItem checkItem : checkItems) {
+            Log.d(TAG, "checkItem: " + checkItem);
+
+            // 得到子项
+            ToMany<CheckItem> children = checkItem.children;
+            if (children != null && children.size() > 0) {
+                Log.d(TAG, "checkItem.children: " + children);
+                for (CheckItem child : children) {
+                    Log.d(TAG, "child: " + child);
+                }
+            }
+            Log.d(TAG, "-------------------------");
+
+            //  得到父项 checkItem.parent.getTarget();
+        }
+        Log.d(TAG, "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+        mCheckItemQuery = mCheckItemBox.query()
+                .equal(CheckItem_.level, 1)
+                .build();
+
+        checkItems = mCheckItemQuery.find();
+        for (CheckItem checkItem : checkItems) {
+            Log.d(TAG, "checkItem: " + checkItem);
+            ToMany<CheckItem> children = checkItem.children;
+            if (children != null && children.size() > 0) {
+                Log.d(TAG, "checkItem.children: " + children);
+                for (CheckItem child : children) {
+                    Log.d(TAG, "child: " + child);
+                }
+            }
+            Log.d(TAG, "-------------------------");
+        }
+
     }
 }
