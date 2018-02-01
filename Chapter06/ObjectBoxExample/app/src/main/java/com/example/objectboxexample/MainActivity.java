@@ -113,6 +113,10 @@ public class MainActivity extends AppCompatActivity {
 
         // 得到属性id的聚合值
         notesQuery = notesBox.query().build();
+
+        // count返回查询行数
+        Log.d(TAG, "count: " + notesQuery.count());
+
         PropertyQuery propertyQuery_id = notesQuery.property(Note_.id);
         // max
         // 得到最大的id
