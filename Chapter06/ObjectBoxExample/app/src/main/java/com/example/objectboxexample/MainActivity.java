@@ -192,4 +192,19 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "getOrder: order " + order);
         Log.d(TAG, "getOrder: customer " + order.customer.getTarget());
     }
+
+    public void toMany(View view) {
+        Customer customer = new Customer();
+        customer.name="zhangsan";
+        customer.orders.add(new Order());
+        customer.orders.add(new Order());
+        customer.orders.add(new Order());
+
+        mCustomerBox.put(customer);
+
+        Log.d(TAG, "toMany: customer " + customer);
+        for (Order order : customer.orders) {
+            Log.d(TAG, "toMany: order " + order);
+        }
+    }
 }
