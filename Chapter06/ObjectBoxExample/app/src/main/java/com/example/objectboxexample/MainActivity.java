@@ -8,8 +8,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.model.Customer;
 import com.example.model.Note;
 import com.example.model.Note_;
+import com.example.model.Order;
 
 import java.util.Date;
 import java.util.List;
@@ -41,8 +43,16 @@ public class MainActivity extends AppCompatActivity {
         return Long.valueOf(mEtId.getText().toString());
     }
 
+    private BoxStore boxStore;
+
     private Box<Note> notesBox;
     private Query<Note> notesQuery;
+
+    private Box<Customer> mCustomerBox;
+    private Query<Customer> mCustomerQuery;
+
+    private Box<Order> mOrderBox;
+    private Query<Order> mOrderQuery;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,6 +65,10 @@ public class MainActivity extends AppCompatActivity {
         BoxStore boxStore = ((App) getApplication()).getBoxStore();
         // 初始化notesBox
         notesBox = boxStore.boxFor(Note.class);
+
+        mCustomerBox = boxStore.boxFor(Customer.class);
+
+        mOrderBox = boxStore.boxFor(Order.class);
 
     }
 
@@ -131,5 +145,51 @@ public class MainActivity extends AppCompatActivity {
         // avg
         double avgId = propertyQuery_id.avg();
         Log.d(TAG, "avg id:" + avgId);
+    }
+
+    public void toOne(View view) {
+        // 添加一个客户和一些订单。
+        Order order = new Order();
+        Customer customer = new Customer();
+        customer.name = "LewJun";
+        // 要设置customer对象，需要在ToOne实例上调用 setTarget()，并保存order对象
+        order.customer.setTarget(customer);
+        mOrderBox.put(order);
+
+        Log.d(TAG, "toOne: customer: " + customer + ", order: " + order);
+    }
+
+    public void getOrder(View view) {
+        // get会查询数据库调用（懒加载）
+        Order order = mOrderBox.get(1);
+        Log.d(TAG, "getOrder: order " + order);
+
+        // 要在订单中获取客户customer id，只需要使用 getTargetId() 它可以更有效，因为它根本不查询数据库。
+        Log.d(TAG, "getOrder: target id " + order.customer.getTargetId());
+        // 要在订单中获取客户customer整个对象，需要使用 getTarget()
+        Customer customer = order.customer.getTarget();
+        Log.d(TAG, "getOrder: customer " + customer);
+
+        // 移除关系
+        order.customer.setTarget(null);
+        // 持久化到数据库
+        mOrderBox.put(order);
+
+        Log.d(TAG, "getOrder: order " + order);
+        Log.d(TAG, "getOrder: target id " + order.customer.getTargetId());
+
+        customer = order.customer.getTarget();
+        Log.d(TAG, "getOrder: customer " + customer);
+
+        // 重新绑定关系
+        order.customer.setTargetId(3);
+
+        // 持久化到数据库
+        mOrderBox.put(order);
+
+        // 重新得到order
+        order = mOrderBox.get(1);
+        Log.d(TAG, "getOrder: order " + order);
+        Log.d(TAG, "getOrder: customer " + order.customer.getTarget());
     }
 }
