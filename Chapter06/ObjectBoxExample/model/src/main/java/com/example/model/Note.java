@@ -4,6 +4,7 @@ import java.util.Date;
 
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
+import io.objectbox.annotation.Transient;
 
 /**
  * Created by LewJun on 2018/1/31.
@@ -15,6 +16,10 @@ public class Note {
     public String text;
     public String comment;
     public Date date;
+
+
+    @Transient//不需要持久化该字段
+    public int tempUsageCount;
 
     public Note() {
     }
