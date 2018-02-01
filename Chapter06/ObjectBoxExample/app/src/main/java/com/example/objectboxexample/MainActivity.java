@@ -16,6 +16,7 @@ import java.util.List;
 
 import io.objectbox.Box;
 import io.objectbox.BoxStore;
+import io.objectbox.query.PropertyQuery;
 import io.objectbox.query.Query;
 
 public class MainActivity extends AppCompatActivity {
@@ -98,11 +99,33 @@ public class MainActivity extends AppCompatActivity {
         // 重用query 和参数
         // 查询对象允许您以有效的方式多次执行查询。为了使查询更加可重用，
         // 您以前在QueryBuilder中设置的所有条件值都可以更改。这就是我们称之为查询参数的原因。
+
+        // 这里我们使用了同一个查询对象来查找两组用户，每个用户的名字都不同。
+        // 请注意， 构建查询时，我们仍然需要初始化firstName属性的值 。因为我们使用setParameter ()覆盖值。我们可以在初始构建查询时传递一个空字符串。
+        // 重用query的好处是不用每次通过build来获取，频繁查询会提高性能。
         notesQuery = notesBox.query().equal(Note_.text, "").build();
         List<Note> joesList = notesQuery.setParameter(Note_.text, "joes").find();
         Log.d(TAG, "joesList: " + joesList);
 
         List<Note> jackList = notesQuery.setParameter(Note_.text, "jack").find();
         Log.d(TAG, "jackList: " + jackList);
+
+
+        // 得到属性id的聚合值
+        notesQuery = notesBox.query().build();
+        PropertyQuery propertyQuery_id = notesQuery.property(Note_.id);
+        // max
+        // 得到最大的id
+        long maxId = propertyQuery_id.max();
+        Log.d(TAG, "max id: " + maxId);
+
+        // max
+        // 得到最小的id
+        long minId = propertyQuery_id.min();
+        Log.d(TAG, "min id:" + minId);
+
+        // avg
+        double avgId = propertyQuery_id.avg();
+        Log.d(TAG, "avg id:" + avgId);
     }
 }
