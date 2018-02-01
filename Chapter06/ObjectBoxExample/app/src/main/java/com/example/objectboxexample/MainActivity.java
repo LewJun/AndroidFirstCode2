@@ -94,5 +94,15 @@ public class MainActivity extends AppCompatActivity {
         for (Note note : notes) {
             Log.d(TAG, "find: " + note);
         }
+
+        // 重用query 和参数
+        // 查询对象允许您以有效的方式多次执行查询。为了使查询更加可重用，
+        // 您以前在QueryBuilder中设置的所有条件值都可以更改。这就是我们称之为查询参数的原因。
+        notesQuery = notesBox.query().equal(Note_.text, "").build();
+        List<Note> joesList = notesQuery.setParameter(Note_.text, "joes").find();
+        Log.d(TAG, "joesList: " + joesList);
+
+        List<Note> jackList = notesQuery.setParameter(Note_.text, "jack").find();
+        Log.d(TAG, "jackList: " + jackList);
     }
 }
