@@ -4,6 +4,7 @@ import java.util.Date;
 
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
+import io.objectbox.annotation.Index;
 import io.objectbox.annotation.Transient;
 
 /**
@@ -23,6 +24,9 @@ public class Note {
 
     public Note() {
     }
+
+    @Index // 数据库会建立该属性的索引，当频繁查询该属性时会提高性能。
+    public String serverUid;
 
     public Note(long id, String text, String comment, Date date) {
         this();
