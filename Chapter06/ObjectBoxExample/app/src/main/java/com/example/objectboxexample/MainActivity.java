@@ -12,6 +12,7 @@ import com.example.model.ApiResult;
 import com.example.model.CheckItem;
 import com.example.model.CheckItem_;
 import com.example.model.Customer;
+import com.example.model.MyNewEntity;
 import com.example.model.Note;
 import com.example.model.Note_;
 import com.example.model.Order;
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
     private Box<CheckItem> mCheckItemBox;
     private Query<CheckItem> mCheckItemQuery;
 
+    private Box<MyNewEntity> mMyEntityBox;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -83,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
         mCheckItemBox = boxStore.boxFor(CheckItem.class);
 
+        mMyEntityBox = boxStore.boxFor(MyNewEntity.class);
     }
 
     private void setupViews() {
@@ -355,5 +358,20 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "-------------------------");
         }
 
+    }
+
+    public void myEntityDemo(View view) {
+//        mMyEntityBox.put(new MyNewEntity(0, "2016", "22"));
+//        mMyEntityBox.put(new MyNewEntity(0, "2017", "23"));
+//        mMyEntityBox.put(new MyNewEntity(0, "2018", "24"));
+
+        mMyEntityBox.put(new MyNewEntity(0, 2016, "22"));
+        mMyEntityBox.put(new MyNewEntity(0, 2017, "23"));
+        mMyEntityBox.put(new MyNewEntity(0, 2018, "24"));
+    }
+
+    public void getMyEntity(View view) {
+        List<MyNewEntity> entityList = mMyEntityBox.getAll();
+        Log.d(TAG, "myEntityDemo: " + entityList);
     }
 }

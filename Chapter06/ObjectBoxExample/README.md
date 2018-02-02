@@ -479,6 +479,69 @@ getTreeNode() {
 }
 
 
+## @Uid的使用
+如果要直接删除和添加表，那么直接操作就可以了。但是如果要保留之前的数据，这就得要使用@Uid来重命名类名或属性名了。
+```java
+@Entity
+public class MyEntity {
+    @Id
+    public long id;
+
+    public String year;
+    
+    public String day;
+}
+```
+然后添加了几条数据
+```java 
+mMyEntityBox.put(new MyNewEntity(0, "2016", "22"));
+mMyEntityBox.put(new MyNewEntity(0, "2017", "23"));
+mMyEntityBox.put(new MyNewEntity(0, "2018", "24"));
+```
+
+* 在实体上使用@Uid
+```java
+@Entity
+@Uid
+public class MyEntity {}
+```
+
+* 编译项目报错
+```
+注: [ObjectBox] Starting ObjectBox processor (debug: false)
+错误: [ObjectBox] UID operations for entity "MyEntity": 
+[Rename] apply the current UID using @Uid(824981247062842558L) - 
+[Change/reset] apply a new UID using @Uid(8060000089094701411L)
+1 个错误
+```
+提示当前的Uid是824981247062842558L，之前的Uid是8060000089094701411L
+
+* 将重置后得Uid应用在实体上
+
+注意，我们是要改名，所以要使用[Rename]部分，如果是改变字段类型，要使用[Change/reset]部分
+```java
+@Entity
+@Uid(824981247062842558L)
+public class MyEntity {}
+```
+
+* 在语言层面上重命名
+
+MyEntity -> MyNewEntity
+```java
+@Entity
+@Uid(824981247062842558L)
+public class MyNewEntity {}
+```
+这样，之前的数据就得以保留了下来。
+
+* 更改字段
+
+更改year字段类型为int，[Change/reset]
+重命名day字段为dayOfMonth，[Rename]
+
+> 注意 更改字段类型可能会导致数据丢失，例如将String year -> int year，数据全变为了0
+
 ## FAQ
 * minSdkVersion >= 15
 * box.get(id > 0)，id必须大于0，java.lang.IllegalArgumentException: Illegal key value: 0
