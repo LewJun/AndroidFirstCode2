@@ -1,6 +1,7 @@
 package com.example.objectboxexample;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import com.example.model.CheckItem;
 import com.example.model.CheckItem_;
 import com.example.model.Customer;
 import com.example.model.MyNewEntity;
+import com.example.model.MyNewEntity_;
 import com.example.model.Note;
 import com.example.model.Note_;
 import com.example.model.Order;
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
     private Query<CheckItem> mCheckItemQuery;
 
     private Box<MyNewEntity> mMyEntityBox;
+    private Query<MyNewEntity> mMyNewEntityQuery;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -373,5 +376,27 @@ public class MainActivity extends AppCompatActivity {
     public void getMyEntity(View view) {
         List<MyNewEntity> entityList = mMyEntityBox.getAll();
         Log.d(TAG, "myEntityDemo: " + entityList);
+    }
+
+    public void colorConvert(View view) {
+        MyNewEntity entity = new MyNewEntity();
+        entity.year = 2015;
+        entity.dayOfMonth = "11";
+        entity.color = MyNewEntity.Color.GREEN;
+        mMyEntityBox.put(entity);
+        Log.d(TAG, "colorConvert: " + entity);
+    }
+
+    public void getColorConvert(View view) {
+        mMyNewEntityQuery = mMyEntityBox.query()
+                .equal(MyNewEntity_.color, MyNewEntity.Color.GREEN.code)
+                .notEqual(MyNewEntity_.year, 0)
+                .build();
+
+        List<MyNewEntity> myNewEntities = mMyNewEntityQuery.find();
+        Log.d(TAG, "myNewEntities: " + myNewEntities);
+        for (MyNewEntity myNewEntity : myNewEntities) {
+            Log.d(TAG, "getColorConvert: " + myNewEntity);
+        }
     }
 }

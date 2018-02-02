@@ -109,7 +109,7 @@
         },
         {
           "id": "3:8954002211315514987",
-          "name": "day"
+          "name": "dayOfMonth"
         },
         {
           "id": "6:7499039675103557753",
@@ -125,9 +125,6 @@
   "lastSequenceId": "0:0",
   "modelVersion": 4,
   "modelVersionParserMinimum": 4,
-  "newUidPool": [
-    2794471585932530588
-  ],
   "retiredEntityUids": [],
   "retiredIndexUids": [
     7786637744503165257,

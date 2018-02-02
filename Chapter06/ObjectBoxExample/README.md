@@ -542,6 +542,82 @@ public class MyNewEntity {}
 
 > 注意 更改字段类型可能会导致数据丢失，例如将String year -> int year，数据全变为了0
 
+## 自定义类型
+
+MyNewEntity.Color.java
+
+MyNewEntity.ColorConvert.java
+
+```java 
+    public enum Color {
+        RED(1, "F00"),
+        GREEN(2, "0F0"),
+        BLUE(3, "00F"),
+        BLACK(4, "000"),
+        WHITE(5, "FFF");
+
+        public int code;
+
+        public String msg;
+
+        Color(int code, String msg) {
+            this.code = code;
+            this.msg = msg;
+        }
+    }
+
+//    如果您在实体类中定义自定义类型或转换器，则它们必须是静态的。否则编译错误: 需要包含MyNewEntity.ColorConvert的封闭实例
+    static class ColorConverter implements PropertyConverter<Color, Integer> {
+
+        @Override
+        public Color convertToEntityProperty(Integer databaseValue) {
+            if (databaseValue == null) {
+                return null;
+            }
+
+            for (Color color : Color.values()) {
+                if (color.code == databaseValue) {
+                    return color;
+                }
+            }
+            return Color.BLACK;
+        }
+
+        @Override
+        public Integer convertToDatabaseValue(Color entityProperty) {
+            return entityProperty == null ? null : entityProperty.code;
+        }
+    }
+
+    @Convert(converter = ColorConverter.class, dbType = Integer.class)
+    public Color color;
+```
+
+
+```java 
+    public void colorConvert(View view) {
+        MyNewEntity entity = new MyNewEntity();
+        entity.year = 2015;
+        entity.dayOfMonth = "11";
+        entity.color = MyNewEntity.Color.GREEN;
+        mMyEntityBox.put(entity);
+        Log.d(TAG, "colorConvert: " + entity);
+    }
+
+    public void getColorConvert(View view) {
+        mMyNewEntityQuery = mMyEntityBox.query()
+                .equal(MyNewEntity_.color, MyNewEntity.Color.GREEN.code)
+                .notEqual(MyNewEntity_.year, 0)
+                .build();
+
+        List<MyNewEntity> myNewEntities = mMyNewEntityQuery.find();
+        Log.d(TAG, "myNewEntities: " + myNewEntities);
+        for (MyNewEntity myNewEntity : myNewEntities) {
+            Log.d(TAG, "getColorConvert: " + myNewEntity);
+        }
+    }
+```
+
 ## FAQ
 * minSdkVersion >= 15
 * box.get(id > 0)，id必须大于0，java.lang.IllegalArgumentException: Illegal key value: 0
