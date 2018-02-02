@@ -1,5 +1,10 @@
 package com.example.model;
 
+import java.io.IOException;
+import java.nio.Buffer;
+import java.util.ArrayList;
+import java.util.List;
+
 import io.objectbox.annotation.Convert;
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
@@ -24,6 +29,9 @@ public class MyNewEntity {
     @Convert(converter = ColorConverter.class, dbType = Integer.class)
     public Color color;
 
+    @Convert(converter = DeviceIdConverter.class, dbType = String.class)
+    public List<Long> deviceIds;
+
     public MyNewEntity() {}
 
     public MyNewEntity(long id, int year, String dayOfMonth) {
@@ -39,6 +47,7 @@ public class MyNewEntity {
                 ", year='" + year + '\'' +
                 ", dayOfMonth='" + dayOfMonth + '\'' +
                 ", color='" + color + '\'' +
+                ", deviceIds='" + deviceIds + '\'' +
                 '}';
     }
 
@@ -82,4 +91,31 @@ public class MyNewEntity {
         }
     }
 
+    static class DeviceIdConverter implements PropertyConverter<List<Long>, String> {
+        @Override
+        public List<Long> convertToEntityProperty(String databaseValue) {
+            if (databaseValue == null) {
+                return null;
+            }
+
+            String[] databaseValues = databaseValue.split(";");
+            List<Long> result = new ArrayList<>();
+            for (String dv : databaseValues) {
+                result.add(Long.valueOf(dv));
+            }
+            return result;
+        }
+
+        @Override
+        public String convertToDatabaseValue(List<Long> entityProperty) {
+            if (entityProperty == null) {
+                return null;
+            }
+            StringBuilder sb = new StringBuilder();
+            for (Long ep : entityProperty) {
+                sb.append(ep).append(";");
+            }
+            return sb.toString();
+        }
+    }
 }

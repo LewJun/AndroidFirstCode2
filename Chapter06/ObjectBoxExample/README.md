@@ -618,6 +618,61 @@ MyNewEntity.ColorConvert.java
     }
 ```
 
+## 自定义类型转换 list
+```java 
+@Convert(converter = DeviceIdConverter.class, dbType = String.class)
+public List<Long> deviceIds;
+
+static class DeviceIdConverter implements PropertyConverter<List<Long>, String> {
+    @Override
+    public List<Long> convertToEntityProperty(String databaseValue) {
+        if (databaseValue == null) {
+            return null;
+        }
+
+        String[] databaseValues = databaseValue.split(";");
+        List<Long> result = new ArrayList<>();
+        for (String dv : databaseValues) {
+            result.add(Long.valueOf(dv));
+        }
+        return result;
+    }
+
+    @Override
+    public String convertToDatabaseValue(List<Long> entityProperty) {
+        if (entityProperty == null) {
+            return null;
+        }
+        StringBuilder sb = new StringBuilder();
+        for (Long ep : entityProperty) {
+            sb.append(ep).append(";");
+        }
+        return sb.toString();
+    }
+}
+```
+
+添加和获取数据
+```java 
+
+    public void listConvert(View view) {
+        MyNewEntity entity = new MyNewEntity();
+        List<Long> deviceIds = new ArrayList<>();
+        deviceIds.add(21L);
+        deviceIds.add(32L);
+        deviceIds.add(43L);
+
+        entity.deviceIds = deviceIds;
+        mMyEntityBox.put(entity);
+        Log.d(TAG, "listConvert: " + entity);
+    }
+
+    public void getListConvert(View view) {
+        List<MyNewEntity> newEntities = mMyEntityBox.getAll();
+        Log.d(TAG, "getListConvert: " + newEntities);
+    }
+```
+
 ## FAQ
 * minSdkVersion >= 15
 * box.get(id > 0)，id必须大于0，java.lang.IllegalArgumentException: Illegal key value: 0

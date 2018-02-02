@@ -22,6 +22,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -398,5 +399,22 @@ public class MainActivity extends AppCompatActivity {
         for (MyNewEntity myNewEntity : myNewEntities) {
             Log.d(TAG, "getColorConvert: " + myNewEntity);
         }
+    }
+
+    public void listConvert(View view) {
+        MyNewEntity entity = new MyNewEntity();
+        List<Long> deviceIds = new ArrayList<>();
+        deviceIds.add(21L);
+        deviceIds.add(32L);
+        deviceIds.add(43L);
+
+        entity.deviceIds = deviceIds;
+        mMyEntityBox.put(entity);
+        Log.d(TAG, "listConvert: " + entity);
+    }
+
+    public void getListConvert(View view) {
+        List<MyNewEntity> newEntities = mMyEntityBox.getAll();
+        Log.d(TAG, "getListConvert: " + newEntities);
     }
 }
