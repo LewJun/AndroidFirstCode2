@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/d4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/d4"
+            android:background="@drawable/bg_rectangle_01_solid"
+            android:text="solid 设置形状填充颜色"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/d4"
+            android:background="@drawable/bg_rectangle_02_padding"
+            android:text="padding 设置内边距"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/d4"
+            android:background="@drawable/bg_rectangle_04_corners"
+            android:text="corners 设置圆角"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/d4"
+            android:background="@drawable/bg_rectangle_05_stroke"
+            android:text="stroke 描边color、width"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/d4"
+            android:background="@drawable/bg_rectangle_05_stroke_1"
+            android:text="stroke 描边虚线"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/d4"
+            android:background="@drawable/bg_rectangle_05_stroke_2"
+            android:text="stroke only 镂空"
+            android:textColor="@color/colorPrimary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/d4"
+            android:background="@drawable/bg_rectangle_03_gradient_linear"
+            android:text="gradient linear线性渐变"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/d4"
+            android:background="@drawable/bg_rectangle_03_gradient_linear_angle"
+            android:text="gradient linear线性渐变 angle设置渐变方向"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/d4"
+            android:background="@drawable/bg_rectangle_03_gradient_radial"
+            android:text="gradient radial 辐射渐变"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/d4"
+            android:background="@drawable/bg_rectangle_03_gradient_radial_center_xy"
+            android:text="gradient radial center x y改变圆心位置"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/d4"
+            android:background="@drawable/bg_rectangle_03_gradient_sweep"
+            android:text="sweep"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+</ScrollView>
+
