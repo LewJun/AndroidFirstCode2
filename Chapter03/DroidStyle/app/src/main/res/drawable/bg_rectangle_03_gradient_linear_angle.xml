@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--使用shape可以自定义形状，通过android:shape属性指定-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!--
+    设置形状填充的颜色
+    -->
+    <solid android:color="@color/colorPrimary" />
+
+    <!--padding设置内边距-->
+    <padding
+        android:bottom="32dp"
+        android:left="32dp"
+        android:right="32dp"
+        android:top="32dp" />
+
+    <!--
+    gradient 设置渐变颜色
+    默认type就是linear
+    startColor 渐变开始颜色
+    centerColor 设置中间的颜色
+    endColor 渐变结束颜色
+
+    默认情况下，渐变是从左往右的，angle取值如下：
+                        90(-45, -90, -180, 270) 从上到下
+          0, 360 从左到右                            180 从右向左
+          45 从左下角到右上角（45在rectangle中效果不明显）
+          315 从左上角到右下角
+          135 从右下角到左上角
+          225 从右上角到左下角
+          角度必须是45的倍数，其他值无效
+    -->
+    <gradient
+        android:type="linear"
+        android:startColor="@color/colorPrimary"
+        android:centerColor="@android:color/holo_green_dark"
+        android:endColor="@color/colorAccent"
+        android:angle="135"
+        />
+</shape>
