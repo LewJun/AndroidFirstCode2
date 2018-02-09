@@ -17,6 +17,7 @@
     <!--
     设置所有圆角为4dp
     然后设置左上角和右下角为16dp
+    corners只在shape为rectangle时有效
     -->
     <corners
         android:radius="@dimen/d4"
