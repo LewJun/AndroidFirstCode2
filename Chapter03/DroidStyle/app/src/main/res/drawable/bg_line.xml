@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="line">
+    <!--
+    line只支持<stroke>和<padding>两个节点
+
+    如果view要显示虚线，必须设置android:layerType="software"，否则显示的是实线
+    -->
+    <stroke
+        android:width="2dp"
+        android:color="@color/colorAccent"
+        android:dashGap="@dimen/d16"
+        android:dashWidth="@dimen/d4" />
+</shape>
