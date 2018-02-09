@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--使用shape可以自定义形状，通过android:shape属性指定-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!--
+    设置形状填充的颜色
+    -->
+    <solid android:color="@color/colorPrimary" />
+
+    <!--padding设置内边距-->
+    <padding
+        android:bottom="@dimen/d16"
+        android:left="@dimen/d16"
+        android:right="@dimen/d16"
+        android:top="@dimen/d16" />
+
+    <!--
+    gradient 设置渐变颜色
+    sweep 表示颜色是围绕中心点360度顺时针旋转的，起点在3点钟位置。可以组合三种颜色
+    startColor 渐变开始颜色
+    centerColor 设置中间的颜色
+    endColor 渐变结束颜色
+
+    可通过centerX centerY 设置圆心的位置 默认都是0.5
+    -->
+    <gradient
+        android:type="sweep"
+        android:endColor="@color/colorAccent"
+        android:centerColor="@color/colorPrimary"
+        android:centerX="0.618"
+        android:centerY="0.618"
+        />
+</shape>
