@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--使用shape可以自定义形状，通过android:shape属性指定-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!--
+    设置形状填充的颜色
+    -->
+    <solid android:color="@color/colorPrimary" />
+
+    <!--padding设置内边距-->
+    <padding
+        android:bottom="@dimen/d4"
+        android:left="@dimen/d4"
+        android:right="@dimen/d4"
+        android:top="@dimen/d4" />
+
+    <!--
+    设置所有圆角为4dp
+    然后设置左上角和右下角为16dp
+    -->
+    <corners
+        android:radius="@dimen/d4"
+        android:bottomRightRadius="@dimen/d16"
+        android:topLeftRadius="@dimen/d16" />
+</shape>
