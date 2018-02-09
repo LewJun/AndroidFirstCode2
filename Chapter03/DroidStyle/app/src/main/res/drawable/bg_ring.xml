@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--圆环
+android:useLevel 一般为false，否则可能环形无法显示，只有作为LevelListDrawable使用时才设为true
+android:innerRadius 内环的半径
+android:innerRadiusRatio 浮点型，以环的宽度比率来表示内环的半径，默认为3，表示内环半径为环的宽度除以3，该值会被android:innerRadius覆盖
+android:thickness 环的厚度
+android:thicknessRatio 浮点型，以环的宽度比率来表示环的厚度，默认为9，表示环的厚度为环的宽度除以9，该值会被android:thickness覆盖
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="ring"
+    android:useLevel="false"
+    android:thicknessRatio="9"
+    >
+
+    <solid android:color="@color/colorAccent" />
+
+    <!--描边-->
+    <stroke
+        android:width="8dp"
+        android:color="@android:color/white" />
+
+    <!--渐变-->
+    <gradient
+        android:centerColor="@android:color/holo_green_dark"
+        android:endColor="@color/colorAccent"
+        android:startColor="@color/colorPrimary"
+        android:type="sweep" />
+</shape>
