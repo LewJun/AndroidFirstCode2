@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--使用shape可以自定义形状，通过android:shape属性指定-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!--padding设置内边距-->
+    <padding
+        android:bottom="@dimen/d16"
+        android:left="@dimen/d16"
+        android:right="@dimen/d16"
+        android:top="@dimen/d16" />
+
+    <corners android:radius="@dimen/d4"/>
+    <!--
+    stroke          设置描边
+    color           设置描边颜色
+    width           设置描边的宽度
+    dashWidth       设置虚线长度为16dp
+    dashGap         设置虚线之间的距离为4dp
+    -->
+    <stroke
+        android:color="@color/colorPrimary"
+        android:width="2dp"
+        />
+</shape>
