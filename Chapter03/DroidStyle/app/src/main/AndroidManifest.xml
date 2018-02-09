@@ -16,6 +16,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ShapeActivity"
+            android:label="Shape" />
+        <activity
+            android:name=".SelectorActivity"
+            android:label="Selector" />
+        <activity
+            android:name=".LayerListActivity"
+            android:label="LayerList" />
+        <activity
+            android:name=".AnimationActivity"
+            android:label="Animation" />
+        <activity
+            android:name=".RectangleActivity"
+            android:label="Rectangle" />
+        <activity android:name=".OvalActivity" />
+        <activity android:name=".LineActivity" />
+        <activity android:name=".RingActivity"></activity>
     </application>
 
 </manifest>
