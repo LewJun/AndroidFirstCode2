@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="d0">0dp</dimen>
+    <dimen name="d1">1dp</dimen>
+    <dimen name="d2">2dp</dimen>
     <dimen name="d4">4dp</dimen>
+    <dimen name="d8">8dp</dimen>
     <dimen name="d16">16dp</dimen>
 </resources>
