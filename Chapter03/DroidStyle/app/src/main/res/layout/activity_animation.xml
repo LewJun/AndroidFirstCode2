@@ -33,6 +33,22 @@
             android:src="@drawable/bg_imageview_bitmap"
             />
 
+        <ImageView
+            android:id="@+id/iv_clip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/d8"
+            android:background="@drawable/fu"
+            android:src="@drawable/bg_imageview_clip"
+            />
+
+        <SeekBar
+            android:id="@+id/sb_clip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="10000"
+            android:min="0" />
+
     </LinearLayout>
 </ScrollView>
 
