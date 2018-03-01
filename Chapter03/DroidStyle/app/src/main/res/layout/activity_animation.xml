@@ -19,6 +19,19 @@
             android:layout_height="wrap_content"
             android:src="@mipmap/pic" />
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/d8"
+            android:src="@drawable/googlelogo_color_272x92dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/d8"
+            android:background="@drawable/bg_imageview_bitmap"
+            />
+
     </LinearLayout>
 </ScrollView>
 
