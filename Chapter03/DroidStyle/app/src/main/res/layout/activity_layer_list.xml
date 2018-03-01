@@ -10,14 +10,52 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <RadioGroup
+            android:layout_margin="@dimen/d4"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:orientation="horizontal">
 
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_tab_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:text="男"
+                android:textColor="@color/text_tab_selector" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_tab_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:text="女"
+                android:textColor="@color/text_tab_selector" />
+
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/bg_tab_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:text="未知"
+                android:textColor="@color/text_tab_selector" />
+        </RadioGroup>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/d4"
-            android:background="@drawable/bg_rectangle_01_solid"
-            android:text="@string/app_name"
-            android:textColor="@android:color/white" />
+            android:background="@drawable/bg_shadow_corners_rectangle"
+            android:text="带阴影的圆角矩形"
+            android:padding="@dimen/d16"
+            android:gravity="center"
+            />
     </LinearLayout>
 </ScrollView>
 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingBottom="@dimen/d16"
+    android:paddingMode="stack"
+    android:paddingTop="@dimen/d16">
+    <!--阴影-->
+    <!--
+    偏移距离上面4dp，偏移距离左边2dp 效果同margin
+    -->
+    <item
+        android:left="@dimen/d2"
+        android:top="@dimen/d4">
+        <shape>
+            <solid android:color="@android:color/darker_gray" />
+            <corners android:radius="@dimen/d8" />
+        </shape>
+    </item>
+
+    <!--前景-->
+    <!--
+    偏移距离下边4dp，偏移距离右边2dp
+    -->
+    <item
+        android:bottom="@dimen/d4"
+        android:right="@dimen/d2">
+        <shape>
+            <solid android:color="#FFFFFF" />
+            <corners android:radius="@dimen/d8" />
+        </shape>
+    </item>
+</layer-list>
