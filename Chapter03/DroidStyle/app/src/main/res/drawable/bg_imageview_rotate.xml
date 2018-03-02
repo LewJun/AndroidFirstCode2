@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rotate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/googlelogo_color_272x92dp"
+    android:fromDegrees="180"
+    android:pivotX="50%"
+    android:pivotY="50%"
+    />
+
+<!--
+rotate标签
+使用rotate标签可以对一个drawable进行旋转操作，在shape篇讲环形时最后举了个进度条时就用到了rotate标签。另外，比如你有一张箭头向上的图片，但你还需要一个箭头向下的图片，这时就可以使用rotate将向上的箭头旋转变成一张箭头向下的drawable。
+先看看rotate标签的一些属性吧：
+android:drawable 指定drawable资源，如果不设置该属性，也可以定义drawable类型的子标签
+android:fromDegrees 起始的角度度数
+android:toDegrees 结束的角度度数，正数表示顺时针，负数表示逆时针
+android:pivotX 旋转中心的X坐标，浮点数或是百分比。浮点数表示相对于drawable的左边缘距离单位为px，如5; 百分比表示相对于drawable的左边缘距离按百分比计算，如5%; 另一种百分比表示相对于父容器的左边缘，如5%p; 一般设置为50%表示在drawable中心
+android:pivotY 旋转中心的Y坐标
+android:visible 设置初始的可见性状态，默认为false
+将它引用到ImageView里，发现图片根本没有转变。其实，要让它可以旋转，还需要设置level值。
+level取值范围为0~10000，应用到rotate，则与fromDegrees~toDegrees相对应，如上面例子的角度范围为0~180，那么，level取值0时，则旋转为0度；
+level为10000时，则旋转180度；level为5000时，则旋转90度。因为level默认值为0，所以图片没有转变。那么，我们想转180度，其实可以将fromDegrees设为180，而不设置toDegrees，这样，不用再在代码里设置level图片就可以旋转180了。
+
+如何翻转呢？
+
+-->
