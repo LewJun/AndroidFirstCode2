@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 
 public class AnimationActivity extends AppCompatActivity {
-    private ImageView iv_clip, iv_scale;
+    private ImageView iv_clip, iv_scale, iv_level_list;
     private SeekBar sb_clip;
 
     @Override
@@ -22,6 +22,8 @@ public class AnimationActivity extends AppCompatActivity {
 //        通过设置level值控制缩放多少，level取值范围为0~10000，默认为0，表示完全缩放，图片将不可见；10000则完全不缩放，可见完整图片。
         iv_scale.setImageLevel(5000);
 
+        iv_level_list = findViewById(R.id.iv_level_list);
+
         sb_clip = findViewById(R.id.sb_clip);
 //        通过滑块改变图片的level值
         sb_clip.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -29,6 +31,7 @@ public class AnimationActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 iv_clip.setImageLevel(progress);
                 iv_scale.setImageLevel(progress);
+                iv_level_list.setImageLevel(progress);
             }
 
             @Override

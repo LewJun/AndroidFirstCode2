@@ -58,6 +58,14 @@
             android:src="@drawable/bg_imageview_scale"
             />
 
+        <ImageView
+            android:id="@+id/iv_level_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/d8"
+            android:src="@drawable/bg_imageview_level_list"
+            />
+
     </LinearLayout>
 </ScrollView>
 
