@@ -1,5 +1,6 @@
 package com.example.droidstyle;
 
+import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -62,5 +63,12 @@ public class AnimationActivity extends AppCompatActivity {
             // 逆向切换，即从第二个drawable切换回第一个
             td.reverseTransition(3000);
         }
+    }
+
+    public void btnTransitionList(View view) {
+        AnimationDrawable td = (AnimationDrawable) getResources().getDrawable(R.drawable.bg_imageview_animation_list);
+        ImageView imageView = (ImageView) view;
+        imageView.setImageDrawable(td);
+        td.start();
     }
 }

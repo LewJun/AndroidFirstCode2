@@ -86,9 +86,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/d8"
-            android:onClick="btnTransition"
             android:src="@drawable/bg_imageview_animated_rotate"
             />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/d8"
+            android:onClick="btnTransitionList"
+            android:src="@drawable/bg_imageview_animation_list" />
 
     </LinearLayout>
 </ScrollView>
