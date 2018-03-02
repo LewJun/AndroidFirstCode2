@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transition xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/ic_signal_wifi_0_bar_black_24dp" />
+    <item android:drawable="@drawable/ic_signal_wifi_4_bar_black_24dp" />
+</transition>
+
+<!--
+transition标签
+transition其实是继承自layer-list的，只是，transition只能管理两层drawable，另外提供了两层drawable之间切换的方法，切换时还会有淡入淡出的动画效果。
+transition标签生成的Drawable对应的类为TransitionDrawable，要切换时，需要主动调用TransitionDrawable的startTransition()方法，参数为动画的毫秒数，也可以调用reverseTransition()方法逆向切换。
+((TransitionDrawable)drawable).startTransition(500); //正向切换，即从第一个drawable切换到第二个
+((TransitionDrawable)drawable).reverseTransition(500); //逆向切换，即从第二个drawable切换回第一个
+-->

@@ -66,6 +66,15 @@
             android:src="@drawable/bg_imageview_level_list"
             />
 
+        <ImageView
+            android:id="@+id/iv_transition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/d8"
+            android:onClick="btnTransition"
+            android:src="@drawable/bg_imageview_transition"
+            />
+
     </LinearLayout>
 </ScrollView>
 

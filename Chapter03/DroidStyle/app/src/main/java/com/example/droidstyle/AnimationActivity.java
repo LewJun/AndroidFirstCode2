@@ -1,7 +1,11 @@
 package com.example.droidstyle;
 
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.drawable.TransitionDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 
@@ -44,5 +48,19 @@ public class AnimationActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void btnTransition(View view) {
+        TransitionDrawable td = (TransitionDrawable) getResources().getDrawable(R.drawable.bg_imageview_transition);
+        ImageView imageView = (ImageView) view;
+        imageView.setImageDrawable(td);
+        if (System.currentTimeMillis() % 1000000 == 1) {
+            // 正向切换，即从第一个drawable切换到第二个
+            td.startTransition(3000);
+        } else {
+            // 逆向切换，即从第二个drawable切换回第一个
+            td.reverseTransition(3000);
+        }
     }
 }
