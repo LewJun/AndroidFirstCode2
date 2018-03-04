@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 
@@ -70,5 +73,13 @@ public class AnimationActivity extends AppCompatActivity {
         ImageView imageView = (ImageView) view;
         imageView.setImageDrawable(td);
         td.start();
+    }
+
+    public void btnFadeAlpha(View view) {
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.fade_out);
+        view.startAnimation(animation);
+
+        animation = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+        view.startAnimation(animation);
     }
 }
