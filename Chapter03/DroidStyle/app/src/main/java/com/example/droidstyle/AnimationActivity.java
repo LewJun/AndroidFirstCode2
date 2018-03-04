@@ -12,6 +12,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 
@@ -94,5 +95,10 @@ public class AnimationActivity extends AppCompatActivity {
     public void rotate(View view) {
         RotateAnimation rotateAnim = (RotateAnimation) AnimationUtils.loadAnimation(this, R.anim.rotate);
         view.startAnimation(rotateAnim);
+    }
+
+    public void translate(View view) {
+        TranslateAnimation animation = (TranslateAnimation) AnimationUtils.loadAnimation(this, R.anim.translate);
+        view.startAnimation(animation);
     }
 }

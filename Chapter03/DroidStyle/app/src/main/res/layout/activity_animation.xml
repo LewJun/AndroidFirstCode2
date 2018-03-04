@@ -112,6 +112,11 @@
             android:src="@drawable/googlelogo_color_272x92dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+        <ImageView
+            android:onClick="translate"
+            android:src="@drawable/ic_android_black_24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </ScrollView>
 
