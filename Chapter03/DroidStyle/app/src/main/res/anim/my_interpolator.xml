@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<anticipateOvershootInterpolator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:extraTension="2"
+    android:tension="3" />
+
+
+<!--
+Interpolator
+通过interpolator可以定义动画速率变化的方式，比如加速、减速、匀速等，每种interpolator都是 Interpolator 类的子类，Android系统已经实现了多种interpolator，对应也提供了公共的资源ID
+Interpolator class	Resource ID	Description
+AccelerateDecelerateInterpolator	@android:anim/accelerate_decelerate_interpolator	在动画开始与结束时速率改变比较慢，在中间的时候加速
+AccelerateInterpolator	@android:anim/accelerate_interpolator	在动画开始时速率改变比较慢，然后开始加速
+AnticipateInterpolator	@android:anim/anticipate_interpolator	动画开始的时候向后然后往前抛
+AnticipateOvershootInterpolator	@android:anim/anticipate_overshoot_interpolator	动画开始的时候向后然后向前抛，会抛超过目标值后再返回到最后的值
+BounceInterpolator	@android:anim/bounce_interpolator	动画结束的时候会弹跳
+CycleInterpolator	@android:anim/bounce_interpolator	动画循环做周期运动，速率改变沿着正弦曲线
+DecelerateInterpolator	@android:anim/decelerate_interpolator	在动画开始时速率改变比较快，然后开始减速
+LinearInterpolator	@android:anim/decelerate_interpolator	动画匀速播放
+OvershootInterpolator	@android:anim/overshoot_interpolator	动画向前抛，会抛超过最后值，然后再返回
+
+如果系统提供的以上Interpolator还不符合你的效果，也可以自定义。自定义的方式有两种，一种是通过继承 Interpolator 父类或其子类；另一种是通过自定义的xml文件，可以更改上表中Interpolator的属性。自定义的xml文件需存放于res/anim/目录下，根标签与上表相应的有九种如下：
+<accelerateDecelerateInterpolator> 在动画开始与结束时速率改变比较慢，在中间的时候加速。没有可更改设置的属性，所以设置的效果和系统提供的一样
+<accelerateInterpolator> 在动画开始时速率改变比较慢，然后开始加速。有一个属性可以设置加速的速率
+android:factor 浮点值，加速的速率，默认为1
+<anticipateInterpolator> 动画开始的时候向后然后往前抛。有一个属性设置向后拉的值
+android:tension 浮点值，向后的拉力，默认为2，当设为0时，则不会有向后的动画了
+<anticipateOvershootInterpolator> 动画开始的时候向后然后向前抛，会抛超过目标值后再返回到最后的值。可设置两个属性
+android:tension 浮点值，向后的拉力，默认为2，当设为0时，则不会有向后的动画了
+android:extraTension 浮点值，拉力的倍数，默认为1.5(2*1.5)，当设为0时，则不会有拉力了
+<bounceInterpolator> 动画结束的时候会弹跳。没有可更改设置的属性
+<cycleInterpolator> 动画循环做周期运动，速率改变沿着正弦曲线。有一个属性设置循环次数
+android:cycles 整数值，循环的次数，默认为1
+<decelerateInterpolator> 在动画开始时速率改变比较快，然后开始减速。有一个属性设置减速的速率
+android:factor 浮点值，减速的速率，默认为1
+<linearInterpolator> 动画匀速播放。没有可更改设置的属性
+<overshootInterpolator> 动画向前抛，会抛超过最后值，然后再返回。有一个属性
+android:tension 浮点值，超出终点后的拉力，默认为2
+
+-->
