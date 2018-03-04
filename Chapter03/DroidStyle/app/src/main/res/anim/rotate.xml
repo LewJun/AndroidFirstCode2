@@ -5,6 +5,7 @@
     android:fromDegrees="0"
     android:toDegrees="1080"
     android:duration="5000"
+    android:interpolator="@anim/my_interpolator"
     />
 <!--
 <rotate>可以实现旋转的动画效果，主要的属性如下：

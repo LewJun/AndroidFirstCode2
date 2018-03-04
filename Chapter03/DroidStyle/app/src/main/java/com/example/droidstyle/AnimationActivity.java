@@ -101,4 +101,9 @@ public class AnimationActivity extends AppCompatActivity {
         TranslateAnimation animation = (TranslateAnimation) AnimationUtils.loadAnimation(this, R.anim.translate);
         view.startAnimation(animation);
     }
+
+    public void set_anim(View view) {
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.set_anim);
+        view.startAnimation(animation);
+    }
 }
