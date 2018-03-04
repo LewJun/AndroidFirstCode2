@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -88,5 +89,10 @@ public class AnimationActivity extends AppCompatActivity {
 //        <scale>标签对应的类为ScaleAnimation，父类也是Animation，添加到View上的用法和AlphaAnimation一样
         ScaleAnimation scaleAnim = (ScaleAnimation) AnimationUtils.loadAnimation(this, R.anim.scale_out);
         view.startAnimation(scaleAnim);
+    }
+
+    public void rotate(View view) {
+        RotateAnimation rotateAnim = (RotateAnimation) AnimationUtils.loadAnimation(this, R.anim.rotate);
+        view.startAnimation(rotateAnim);
     }
 }
