@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 
@@ -75,11 +76,17 @@ public class AnimationActivity extends AppCompatActivity {
         td.start();
     }
 
-    public void btnFadeAlpha(View view) {
+    public void fadeAlpha(View view) {
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.fade_out);
         view.startAnimation(animation);
 
         animation = AnimationUtils.loadAnimation(this, R.anim.fade_in);
         view.startAnimation(animation);
+    }
+
+    public void scale(View view) {
+//        <scale>标签对应的类为ScaleAnimation，父类也是Animation，添加到View上的用法和AlphaAnimation一样
+        ScaleAnimation scaleAnim = (ScaleAnimation) AnimationUtils.loadAnimation(this, R.anim.scale_out);
+        view.startAnimation(scaleAnim);
     }
 }

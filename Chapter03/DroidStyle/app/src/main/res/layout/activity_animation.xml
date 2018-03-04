@@ -97,7 +97,13 @@
             android:src="@drawable/bg_imageview_animation_list" />
 
         <ImageView
-            android:onClick="btnFadeAlpha"
+            android:onClick="fadeAlpha"
+            android:src="@drawable/googlelogo_color_272x92dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:onClick="scale"
             android:src="@drawable/googlelogo_color_272x92dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
