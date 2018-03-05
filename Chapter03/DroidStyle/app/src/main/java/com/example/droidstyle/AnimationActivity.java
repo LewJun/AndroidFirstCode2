@@ -1,5 +1,7 @@
 package com.example.droidstyle;
 
+import android.animation.AnimatorInflater;
+import android.animation.ValueAnimator;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Build;
@@ -7,7 +9,6 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
@@ -105,5 +106,26 @@ public class AnimationActivity extends AppCompatActivity {
     public void set_anim(View view) {
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.set_anim);
         view.startAnimation(animation);
+    }
+
+    public void onScaleWidth(final View view) {
+        // 得到当前控件的宽度
+        final int viewWidth = view.getWidth();
+        // 通过AnimatorInflater加载Animator类实例动画
+        ValueAnimator valueAnimator = (ValueAnimator) AnimatorInflater.loadAnimator(this, R.animator.value_animator);
+        // 监听值变化
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator va) {
+                // 当前动画值，即当前宽度比例值，刚开始为100，即100%
+                int currValue = (int) va.getAnimatedValue();
+                // 根据比例更改view的宽度
+                view.getLayoutParams().width = viewWidth * currValue / 100;
+                // 应用
+                view.requestLayout();
+            }
+        });
+        // 启动动画
+        valueAnimator.start();
     }
 }
