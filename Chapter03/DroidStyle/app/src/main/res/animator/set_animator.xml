@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:ordering="together">
+    <objectAnimator
+        android:duration="3000"
+        android:propertyName="width"
+        android:valueFrom="100"
+        android:valueTo="20"
+        android:valueType="intType" />
+
+    <objectAnimator
+        android:duration="3000"
+        android:propertyName="textColor"
+        android:valueTo="@color/colorAccent" />
+</set>
+
+<!--
+<set>标签对应于AnimatorSet类，可以将多个动画组合成一个动画集，如上面提到的在缩放宽度的同时做垂直移动，可以将一个缩放宽度的动画和一个垂直移动的动画组合在一起。
+<set>标签有一个属性可以设置动画的时序关系：
+android:ordering 设置动画的时序关系，取值可为以下两个值之一：
+together 动画同时执行，默认值
+sequentially 动画按顺序执行
+那如果想有些动画同时执行，有些按顺序执行，该怎么办呢？因为<set>标签是可以嵌套其他<set>标签的，也就是说可以将同时执行的组合在一个<set>标签，再嵌在按顺序执行的<set>标签内。
+
+
+-->

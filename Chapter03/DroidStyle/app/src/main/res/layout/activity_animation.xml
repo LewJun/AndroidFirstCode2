@@ -138,6 +138,14 @@
             android:onClick="onScaleWidth2"
             android:text="switch scale width"
             android:textColor="@android:color/white" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_btn_normal"
+            android:onClick="onSetAnimator"
+            android:text="switch scale width"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 </ScrollView>
 

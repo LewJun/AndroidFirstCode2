@@ -1,6 +1,7 @@
 package com.example.droidstyle;
 
 import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.graphics.drawable.AnimationDrawable;
@@ -15,6 +16,7 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 
@@ -143,9 +145,30 @@ public class AnimationActivity extends AppCompatActivity {
         objectAnimator.start();
     }
 
+    public void onSetAnimator(View view) {
+        // 得到当前控件的宽度
+        final int viewWidth = view.getWidth();
+        // 将目标view进行包装
+        ViewWrapper viewWrapper = new ViewWrapper(view, viewWidth);
+        // 通过AnimatorInflater加载Animator类实例动画
+        AnimatorSet animator = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.set_animator);
+        // 设置动画的目标对象为包装后的view
+        animator.setTarget(viewWrapper);
+        // 启动动画
+        animator.start();
+    }
+
     private static class ViewWrapper {
         private View targetView;
         private int maxWidth;
+
+        public int getTextColor() {
+            return ((Button)targetView).getCurrentTextColor();
+        }
+
+        public void setTextColor(int textColor) {
+            ((Button)targetView).setTextColor(textColor);
+        }
 
         private ViewWrapper(View targetView, int maxWidth) {
             this.targetView = targetView;
