@@ -9,6 +9,7 @@
 
 
     <Button
+        style="@style/ButtonNormal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -16,6 +17,7 @@
         android:text="Shape" />
 
     <Button
+        style="@style/ButtonNormal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -23,6 +25,7 @@
         android:text="Selector" />
 
     <Button
+        style="@style/ButtonNormal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -30,6 +33,7 @@
         android:text="Layer-list" />
 
     <Button
+        style="@style/ButtonNormal.Transparent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"

@@ -1,0 +1,14 @@
+<resources>
+    <!--继承自android:style/Widget.Material.Button-->
+    <style name="ButtonNormal" parent="@android:style/Widget.Material.Button">
+        <item name="android:background">@drawable/bg_btn_selector</item>
+        <item name="android:textColor">@color/text_btn_selector</item>
+    </style>
+
+    <!--继承自ButtonNormal-->
+    <style name="ButtonNormal.Transparent">
+        <item name="android:background">@drawable/bg_btn_transparent</item>
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+</resources>
